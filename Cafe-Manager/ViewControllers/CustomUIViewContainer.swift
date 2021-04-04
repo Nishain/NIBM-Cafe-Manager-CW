@@ -8,19 +8,29 @@
 
 import UIKit
 
-class CustomUIViewContainer: UIViewController {
+class CustomUIViewContainer: UIViewController, UITabBarDelegate {
 
+    @IBOutlet weak var topTabBar: UITabBar!
+    var storePage:UITabBarController!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let storePage = storyboard!.instantiateViewController(identifier: "storePage") as UINavigationController
+        topTabBar.delegate = self
+        for (index,tabItem) in topTabBar.items!.enumerated(){
+            tabItem.tag = index
+        }
+        topTabBar.selectedItem = topTabBar.items![0]
+        storePage = storyboard!.instantiateViewController(identifier: "storePage")
         addChild(storePage)
-        storePage.navigationBar.isHidden = true
-        view.addSubview(storePage.view)
+        storePage.tabBar.isHidden = true
+        storePage.view.frame = view.subviews[1].frame
+        view.subviews[1].addSubview(storePage.view)
         
         // Do any additional setup after loading the view.
     }
-    
 
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        storePage.selectedIndex = item.tag
+    }
     /*
     // MARK: - Navigation
 

@@ -7,20 +7,171 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Item-->
+        <scene sceneID="OqE-uA-XfB">
+            <objects>
+                <viewController id="1iZ-lT-Pd6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9KF-hq-qu6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-x7-HUb">
+                                <rect key="frame" x="83" y="44" width="248" height="84.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjw-tK-CvW">
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qI2-dI-YgP">
+                                        <rect key="frame" x="0.0" y="20.5" width="248" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kf-qx-y8W" customClass="RoundBtn" customModule="Cafe_Manager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="54.5" width="248" height="30"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Yjw-tK-CvW" firstAttribute="centerX" secondItem="VFD-yd-RPH" secondAttribute="centerX" id="URC-Mj-0ou"/>
+                            <constraint firstItem="qI2-dI-YgP" firstAttribute="width" secondItem="VFD-yd-RPH" secondAttribute="width" multiplier="0.6" id="ZVW-hj-df2"/>
+                            <constraint firstItem="3f4-x7-HUb" firstAttribute="top" secondItem="VFD-yd-RPH" secondAttribute="top" id="ctS-UU-NIB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VFD-yd-RPH"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="1Og-0b-1g8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbj-B9-KuE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3299" y="858"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="f8W-0V-WHk">
+                                <rect key="frame" x="20" y="64" width="374" height="349.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add an item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEH-jJ-L8r">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AhY-AJ-JWa" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="20.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6e-n0-Roh" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="54.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wQo-DJ-zCg" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DXF-5D-DZy">
+                                        <rect key="frame" x="0.0" y="122.5" width="374" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="ry7-je-GdI"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkO-Rs-1mF" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="250.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSV-ba-yE8" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="284.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSU-tD-vb5">
+                                        <rect key="frame" x="0.0" y="318.5" width="374" height="31"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8h7-Da-2jg">
+                                                <rect key="frame" x="107" y="0.0" width="160.5" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sell it as item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1r-6V-vxp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WQo-ZB-WjH">
+                                                        <rect key="frame" x="111.5" y="0.0" width="51" height="31"/>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="8h7-Da-2jg" firstAttribute="centerX" secondItem="dSU-tD-vb5" secondAttribute="centerX" id="6qC-UL-OvG"/>
+                                            <constraint firstAttribute="bottom" secondItem="8h7-Da-2jg" secondAttribute="bottom" id="Pkb-bD-8Ug"/>
+                                            <constraint firstItem="8h7-Da-2jg" firstAttribute="top" secondItem="dSU-tD-vb5" secondAttribute="top" id="mLc-px-WNH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="f8W-0V-WHk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="BY0-G7-VpP"/>
+                            <constraint firstAttribute="trailing" secondItem="f8W-0V-WHk" secondAttribute="trailing" constant="20" id="HeY-IC-RJZ"/>
+                            <constraint firstItem="f8W-0V-WHk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qO5-C3-XS5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="v8Z-Wb-WUz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="139"/>
+            <point key="canvasLocation" x="4241" y="870"/>
         </scene>
         <!--AuthScreen-->
         <scene sceneID="wMv-L4-kDF">
@@ -229,7 +380,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="frR-y1-6Rc" userLabel="foodList" customClass="FoodList" customModule="Cafe_Manager" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="foodDetail" id="IGd-tH-Tum" customClass="FoodSmallDetailCell" customModule="Cafe_Manager" customModuleProvider="target">
@@ -355,6 +506,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="gZ8-ft-EEJ"/>
                     <navigationItem key="navigationItem" title="Food List" id="BKS-g8-YYM"/>
                     <connections>
                         <outlet property="foodList" destination="frR-y1-6Rc" id="mI0-1B-ZH7"/>
@@ -362,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1f-To-kvr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3299" y="139"/>
+            <point key="canvasLocation" x="4208.695652173913" y="138.61607142857142"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pTL-ai-8hR">
@@ -380,12 +532,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qd0-wM-J41" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1429" y="89"/>
+            <point key="canvasLocation" x="1214" y="70"/>
         </scene>
         <!--Item-->
         <scene sceneID="OXu-cr-kqI">
             <objects>
-                <viewController id="JLH-zb-fFf" sceneMemberID="viewController">
+                <viewController id="JLH-zb-fFf" customClass="CustomUIViewContainer" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HNz-jY-a19">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,17 +549,15 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <items>
-                                            <tabBarItem systemItem="favorites" id="U7Z-c6-RuV"/>
-                                            <tabBarItem systemItem="more" id="izw-Zp-LN7"/>
+                                            <tabBarItem title="Preview" id="U7Z-c6-RuV"/>
+                                            <tabBarItem title="Category" id="izw-Zp-LN7"/>
+                                            <tabBarItem title="Menu" id="K8D-Bh-jW2"/>
                                         </items>
                                     </tabBar>
                                 </subviews>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIH-Ec-e4y">
                                 <rect key="frame" x="0.0" y="93" width="414" height="720"/>
-                                <connections>
-                                    <segue destination="gdl-dt-bON" kind="embed" id="NNz-bc-a2y"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -423,44 +573,33 @@
                         <viewLayoutGuide key="safeArea" id="XId-zZ-fem"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="biZ-zl-bDu"/>
+                    <connections>
+                        <outlet property="topTabBar" destination="NYl-eY-uhT" id="hCY-BZ-yN3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSS-1M-lWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1428.985507246377" y="801.5625"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="Slz-T9-dvD">
+        <!--Tab Bar Controller-->
+        <scene sceneID="uzI-0l-nxn">
             <objects>
-                <navigationController storyboardIdentifier="storePage" automaticallyAdjustsScrollViewInsets="NO" id="Hvi-Vw-O75" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="DIc-Zy-6fg"/>
+                <tabBarController storyboardIdentifier="storePage" automaticallyAdjustsScrollViewInsets="NO" id="B8z-7s-0nY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lvn-ae-v7c">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Toy-6o-Bau">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="aUP-e3-F7c" kind="relationship" relationship="rootViewController" id="tyl-iB-AHD"/>
+                        <segue destination="aUP-e3-F7c" kind="relationship" relationship="viewControllers" id="1sL-GW-pbL"/>
+                        <segue destination="1iZ-lT-Pd6" kind="relationship" relationship="viewControllers" id="4Lm-RK-GxO"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="JnG-35-ejS"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TpZ-7r-V6P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AUH-RK-fIi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2401" y="139"/>
-        </scene>
-        <!--CustomUI View Container-->
-        <scene sceneID="AMC-Vy-q1n">
-            <objects>
-                <viewController id="gdl-dt-bON" customClass="CustomUIViewContainer" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VWm-Gy-zWG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="UWD-md-au3"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ffi-b3-gpX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2242" y="802"/>
+            <point key="canvasLocation" x="3298.5507246376815" y="138.61607142857142"/>
         </scene>
     </scenes>
     <resources>
