@@ -8,7 +8,7 @@
 
 import UIKit
 @IBDesignable
-class AvatarImage: UIImageView {
+class AvatarImage: UIView {
     @IBInspectable var roundBorder:Bool = true{
         didSet{
             if(roundBorder){

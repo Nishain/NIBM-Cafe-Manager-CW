@@ -29,6 +29,11 @@
 		942B45472618BD1900C169AE /* UIPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B45412618BD1900C169AE /* UIPaddingLabel.swift */; };
 		942B45482618BD1900C169AE /* cardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B45422618BD1900C169AE /* cardView.swift */; };
 		942B45492618BD1900C169AE /* AvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B45432618BD1900C169AE /* AvatarImage.swift */; };
+		949668432619C564001EA192 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949668422619C564001EA192 /* CategoryList.swift */; };
+		949668452619D026001EA192 /* OrderStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949668442619D026001EA192 /* OrderStatusCell.swift */; };
+		949668472619D0F2001EA192 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949668462619D0F2001EA192 /* OrderStatus.swift */; };
+		949668492619D166001EA192 /* OrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949668482619D166001EA192 /* OrderScreen.swift */; };
+		9496684B2619D1EA001EA192 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9496684A2619D1EA001EA192 /* CircleButton.swift */; };
 		DCA8BEDD079BB4F7A0009E93 /* Pods_Cafe_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BBD4F82ACDE36686377402B /* Pods_Cafe_Manager.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +85,11 @@
 		942B45412618BD1900C169AE /* UIPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPaddingLabel.swift; sourceTree = "<group>"; };
 		942B45422618BD1900C169AE /* cardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cardView.swift; sourceTree = "<group>"; };
 		942B45432618BD1900C169AE /* AvatarImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImage.swift; sourceTree = "<group>"; };
+		949668422619C564001EA192 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
+		949668442619D026001EA192 /* OrderStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusCell.swift; sourceTree = "<group>"; };
+		949668462619D0F2001EA192 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
+		949668482619D166001EA192 /* OrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderScreen.swift; sourceTree = "<group>"; };
+		9496684A2619D1EA001EA192 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		DC2C401893D9E46D5F7F79F2 /* Pods-Cafe-Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cafe-Manager.release.xcconfig"; path = "Target Support Files/Pods-Cafe-Manager/Pods-Cafe-Manager.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				940CF67F26198C2B0007E37B /* FoodList.swift */,
+				949668422619C564001EA192 /* CategoryList.swift */,
 			);
 			path = TableViews;
 			sourceTree = "<group>";
@@ -121,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				940CF68226198C870007E37B /* FoodDetail.swift */,
+				949668462619D0F2001EA192 /* OrderStatus.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -129,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				940CF68526198DEF0007E37B /* FoodSmallDetailCell.swift */,
+				949668442619D026001EA192 /* OrderStatusCell.swift */,
 			);
 			path = cellsModels;
 			sourceTree = "<group>";
@@ -199,6 +212,7 @@
 				942B452D2618BA2D00C169AE /* AuthScreen.swift */,
 				942B452E2618BA2D00C169AE /* FoodScreen.swift */,
 				940CF67C2619895A0007E37B /* CustomUIViewContainer.swift */,
+				949668482619D166001EA192 /* OrderScreen.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -213,6 +227,7 @@
 				942B45402618BD1900C169AE /* Toast.swift */,
 				942B45412618BD1900C169AE /* UIPaddingLabel.swift */,
 				940CF67A2619693E0007E37B /* AlertPopup.swift */,
+				9496684A2619D1EA001EA192 /* CircleButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -410,15 +425,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9496684B2619D1EA001EA192 /* CircleButton.swift in Sources */,
 				942B45302618BA2D00C169AE /* FoodScreen.swift in Sources */,
 				940CF68026198C2B0007E37B /* FoodList.swift in Sources */,
 				940CF68326198C870007E37B /* FoodDetail.swift in Sources */,
+				949668472619D0F2001EA192 /* OrderStatus.swift in Sources */,
 				942B45462618BD1900C169AE /* Toast.swift in Sources */,
 				942B45492618BD1900C169AE /* AvatarImage.swift in Sources */,
 				942B44F42618A5B900C169AE /* ViewController.swift in Sources */,
+				949668432619C564001EA192 /* CategoryList.swift in Sources */,
 				942B452F2618BA2D00C169AE /* AuthScreen.swift in Sources */,
+				949668452619D026001EA192 /* OrderStatusCell.swift in Sources */,
 				942B45482618BD1900C169AE /* cardView.swift in Sources */,
 				940CF68626198DEF0007E37B /* FoodSmallDetailCell.swift in Sources */,
+				949668492619D166001EA192 /* OrderScreen.swift in Sources */,
 				942B45472618BD1900C169AE /* UIPaddingLabel.swift in Sources */,
 				940CF67B2619693E0007E37B /* AlertPopup.swift in Sources */,
 				942B45442618BD1900C169AE /* RoundBtn.swift in Sources */,

@@ -27,16 +27,22 @@ class AuthScreen: UIViewController {
     var currentMode = FunctionMode.register
     var alertPop:AlertPopup!
     let auth = Auth.auth()
+    override func viewDidAppear(_ animated: Bool) {
+        moveToMainScreen()
+    }
     override func viewDidLoad() {
 //        let screen  = storyboard!.instantiateViewController(identifier: "homeScreen")
 //        screen.modalPresentationStyle = .overCurrentContext
 //        present(screen,animated: true)
+        
+        
         alertPop = AlertPopup(self)
     
         super.viewDidLoad()
         swapFunctioningMode()
         toast.isHidden = true
         // Do any additional setup after loading the view.
+        
     }
     @IBAction func onForgetPassword(_ sender: Any) {
         if isEmpty([email]){
