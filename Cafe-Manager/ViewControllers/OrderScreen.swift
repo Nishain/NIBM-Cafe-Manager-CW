@@ -24,14 +24,7 @@ class OrderScreen: UITableViewController {
     //sortOrders()
       sectionHeadings = getSectionHeadings()
     }
-    let statusMeaning:[Int:String] = [
-        1:"New",
-        2:"Preparing",
-        3:"Ready",
-        4:"Arriving",
-        5:"Done",
-        6:"Cancel"
-    ]
+    
     func sortOrders(){
         orders = orders.sorted(by: {$0.status > $1.status})
     }
@@ -54,7 +47,7 @@ class OrderScreen: UITableViewController {
    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let entry = sectionHeadings[section]
-        return "\(statusMeaning[entry.status]!) (\(entry.frequesncy))"
+        return "\(StaticInfoManager.statusMeaning[entry.status]!) (\(entry.frequesncy))"
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -73,7 +66,10 @@ class OrderScreen: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "orderStatusCell", for: indexPath) as! OrderStatusCell
         cell.orderID.text = String(orderInfo.orderID)
         cell.customerName.text = orderInfo.customerName
-        cell.statusContainer.setTitle(statusMeaning[orderInfo.status], for: .normal)
+        cell.statusContainer.setTitle(StaticInfoManager.statusMeaning [orderInfo.status], for: .normal)
+        cell.onOrderSelected = {
+            self.onOrderSelected(source: orderInfo)
+        }
         if filteredData[indexPath.row].status == 1{
             cell.secondaryButton.setTitle("Accept", for: .normal)
             
@@ -102,12 +98,21 @@ class OrderScreen: UITableViewController {
 
         return cell
     }
+    
     @objc func onOrderRejected(sender:UIButton){
         orders.remove(at: sender.tag)
         sectionHeadings = getSectionHeadings()
         tableView.reloadData()
     }
-
+    func onOrderSelected(source:OrderStatus){
+         let backButton = UIBarButtonItem()
+               backButton.title = "\(source.customerName!) (\(source.orderID)"
+               navigationItem.backBarButtonItem = backButton
+        let screen = storyboard?.instantiateViewController(identifier: "OrderMoreDetails") as! OrderMoreDetails
+        screen.orderDetails = source
+        navigationController?.pushViewController(screen, animated: true)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

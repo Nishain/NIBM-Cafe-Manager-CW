@@ -15,6 +15,7 @@ class OrderStatusCell: UITableViewCell {
     @IBOutlet weak var buttonContainer: UIStackView!
     @IBOutlet weak var secondaryButton: UIButton!
     @IBOutlet weak var orderID: UILabel!
+    var onOrderSelected:(()->Void)!
     override func awakeFromNib() {
         //id orderStatusCell
         super.awakeFromNib()
@@ -23,7 +24,9 @@ class OrderStatusCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        if selected{
+            onOrderSelected()
+        }
         // Configure the view for the selected state
     }
 
