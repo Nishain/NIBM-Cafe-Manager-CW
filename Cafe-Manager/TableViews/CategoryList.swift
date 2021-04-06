@@ -21,19 +21,20 @@ class CategoryList: UITableView, UITableViewDelegate, UITableViewDataSource {
         text.text = catergories[indexPath.row]
         return cell
     }
-    func setDragDelete()->[UIContextualAction]{
+    func setDragDelete(index:Int)->[UIContextualAction]{
         let closeAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            print("OK, marked as Closed")
+            self.catergories.remove(at: index)
+            self.reloadData()
             success(true)
         })
         closeAction.backgroundColor = .red
         return [closeAction]
     }
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-            return UISwipeActionsConfiguration(actions: setDragDelete())
+        return UISwipeActionsConfiguration(actions: setDragDelete(index: indexPath.row))
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return UISwipeActionsConfiguration(actions: setDragDelete())
+        return UISwipeActionsConfiguration(actions: setDragDelete(index: indexPath.row))
     }
     @objc func onRemoveCategory(sender:UIButton){
         catergories.remove(at: sender.tag)

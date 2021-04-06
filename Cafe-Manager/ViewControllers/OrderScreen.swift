@@ -108,10 +108,10 @@ class OrderScreen: UITableViewController {
     func onOrderSelected(source:OrderStatus){
          let backButton = UIBarButtonItem()
                backButton.title = "\(source.customerName!) (\(source.orderID)"
-               navigationItem.backBarButtonItem = backButton
+        tabBarController?.navigationItem.backBarButtonItem = backButton
         let screen = storyboard?.instantiateViewController(identifier: "OrderMoreDetails") as! OrderMoreDetails
         screen.orderDetails = source
-        navigationController?.pushViewController(screen, animated: true)
+        tabBarController?.navigationController?.pushViewController(screen, animated: true)
     }
     
     /*

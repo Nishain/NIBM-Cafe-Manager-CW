@@ -22,7 +22,7 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
     var storage = Storage.storage()
     override func viewDidLoad() {
         super.viewDidLoad()
-        foodImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(_:))))
+        foodImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onFoodImageTapped(_:))))
         discount.addTarget(self, action: #selector(onFinishEditingDiscount(sender:)), for: .editingDidEnd)
         
         let categoryPicker = UIPickerView()
@@ -35,7 +35,8 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
         category.addTarget(self, action: #selector(onCatergoryEditingBegin(sender:)), for: .editingDidBegin)
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 44))
         toolbar.setItems([
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(customView: UITextView()),
             UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(onFinishSelectingCatergory(sender:))),
                           UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelCategorySelection(sender:)))
         ], animated: true)
@@ -77,15 +78,30 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
     @objc func enableTyping(sender:UITextField){
         sender.isUserInteractionEnabled = true
     }
-    @objc func profileImageTapped(_: Any){
+    func captureImage(isCamera:Bool){
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = false
         imagePickerController.mediaTypes = ["public.image"]
-        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.sourceType = isCamera ? .camera : .photoLibrary
         imagePickerController.modalPresentationStyle = .fullScreen
+        
         present(imagePickerController,animated: true)
     }
+    @objc func onFoodImageTapped(_: Any){
+        let prompt = UIAlertController(title: "Choose Method", message: "Choose a method to captaure image to food item", preferredStyle: .actionSheet)
+        prompt.addAction(UIAlertAction(title: "By Camera", style: .default, handler: {action in
+            self.captureImage(isCamera: true)
+        }))
+        prompt.addAction(UIAlertAction(title: "From gallery",style: .default, handler: { action in
+            self.captureImage(isCamera: false)
+        }))
+        prompt.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
+            prompt.dismiss(animated: true, completion: nil)
+        }))
+        present(prompt,animated: true)
+    }
+    
     //this function is called user finished selecting an image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)

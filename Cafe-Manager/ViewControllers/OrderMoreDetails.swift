@@ -16,6 +16,7 @@ class OrderMoreDetails: UIViewController {
     var orderDetails : OrderStatus!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         buttonStatus.setTitle(StaticInfoManager.statusMeaning[orderDetails.status], for: .normal)
         // Do any additional setup after loading the view.
     }

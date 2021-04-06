@@ -27,9 +27,7 @@ class AuthScreen: UIViewController {
     var currentMode = FunctionMode.register
     var alertPop:AlertPopup!
     let auth = Auth.auth()
-    override func viewDidAppear(_ animated: Bool) {
-        moveToMainScreen()
-    }
+    
     override func viewDidLoad() {
 //        let screen  = storyboard!.instantiateViewController(identifier: "homeScreen")
 //        screen.modalPresentationStyle = .overCurrentContext
@@ -123,8 +121,7 @@ class AuthScreen: UIViewController {
     }
     func moveToMainScreen() {
         let mainScreen = self.storyboard!.instantiateViewController(identifier: "homeScreen")
-        mainScreen.modalPresentationStyle = .fullScreen
-        present(mainScreen,animated: true)
+        navigationController?.setViewControllers([mainScreen], animated: true)
         //navigationController?.setViewControllers([mainScreen], animated: true)
     }
     func loginUser(){
