@@ -17,12 +17,23 @@ class CategoryList: UITableView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "catergoryCell")!
         cell.frame = cell.frame.inset(by: UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10))
-        let contentView = cell.contentView.subviews[0] as! UIStackView
-        (contentView.subviews[0] as! UILabel).text = catergories[indexPath.row]
-        let deleteBtn = contentView.subviews[1] as! UIButton
-        deleteBtn.tag = indexPath.row
-        deleteBtn.addTarget(self, action:#selector(onRemoveCategory(sender:)), for: .touchUpInside)
+        let text = cell.contentView.subviews[0] as! UILabel
+        text.text = catergories[indexPath.row]
         return cell
+    }
+    func setDragDelete()->[UIContextualAction]{
+        let closeAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("OK, marked as Closed")
+            success(true)
+        })
+        closeAction.backgroundColor = .red
+        return [closeAction]
+    }
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            return UISwipeActionsConfiguration(actions: setDragDelete())
+    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration(actions: setDragDelete())
     }
     @objc func onRemoveCategory(sender:UIButton){
         catergories.remove(at: sender.tag)
