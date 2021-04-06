@@ -343,7 +343,7 @@
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="NewProductScreen" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -357,7 +357,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AhY-AJ-JWa" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Food name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AhY-AJ-JWa" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -367,7 +367,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6e-n0-Roh" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Food description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6e-n0-Roh" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="74.5" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -377,7 +377,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wQo-DJ-zCg" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wQo-DJ-zCg" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="118.5" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -387,13 +387,14 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DXF-5D-DZy">
-                                        <rect key="frame" x="0.0" y="162.5" width="374" height="128"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DXF-5D-DZy">
+                                        <rect key="frame" x="0.0" y="163.5" width="374" height="125.5"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="ry7-je-GdI"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkO-Rs-1mF" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkO-Rs-1mF" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="300.5" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -403,7 +404,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSV-ba-yE8" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Discount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSV-ba-yE8" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="344.5" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -450,6 +451,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="v8Z-Wb-WUz"/>
+                    <connections>
+                        <outlet property="category" destination="pkO-Rs-1mF" id="PBD-24-49w"/>
+                        <outlet property="discount" destination="gSV-ba-yE8" id="TR4-cc-8Tx"/>
+                        <outlet property="foodImage" destination="DXF-5D-DZy" id="kRI-ec-PvY"/>
+                        <outlet property="productDescription" destination="b6e-n0-Roh" id="Py6-Cj-BMp"/>
+                        <outlet property="productName" destination="AhY-AJ-JWa" id="LlK-yP-XZB"/>
+                        <outlet property="productPrice" destination="wQo-DJ-zCg" id="Dr5-aK-pv1"/>
+                        <outlet property="setAsItemCheck" destination="WQo-ZB-WjH" id="YzD-NE-OH4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -464,10 +474,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oDD-Th-A42" userLabel="textFieldStack">
-                                <rect key="frame" x="50" y="379" width="314" height="138.5"/>
+                                <rect key="frame" x="50" y="361" width="314" height="174.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nishain.atomic@gmail.com" borderStyle="bezel" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jzI-mx-rHi" userLabel="email" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                         <userDefinedRuntimeAttributes>
@@ -477,7 +487,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Phonenumber" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Yd-3v-tG8" userLabel="phonenumber" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="36" width="314" height="28.5"/>
+                                        <rect key="frame" x="0.0" y="45" width="314" height="37.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         <userDefinedRuntimeAttributes>
@@ -487,7 +497,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="bezel" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HhH-c3-0Ym" userLabel="password" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="74.5" width="314" height="27"/>
+                                        <rect key="frame" x="0.0" y="92.5" width="314" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -497,7 +507,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4S-Wf-P0a" userLabel="confirmPassword" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="111.5" width="314" height="27"/>
+                                        <rect key="frame" x="0.0" y="138.5" width="314" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -509,7 +519,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4N7-LO-ut3">
-                                <rect key="frame" x="87" y="212.5" width="240" height="128"/>
+                                <rect key="frame" x="87" y="194.5" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="HR8-si-drg"/>
                                     <constraint firstAttribute="height" constant="128" id="RTP-hm-uU0"/>
@@ -522,7 +532,7 @@
                                 </variation>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="g99-j1-xub" userLabel="buttonStack">
-                                <rect key="frame" x="50" y="537.5" width="314" height="58"/>
+                                <rect key="frame" x="50" y="555.5" width="314" height="58"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDj-Nq-dYl" customClass="RoundBtn" customModule="Cafe_Manager" customModuleProvider="target">
                                         <rect key="frame" x="121" y="0.0" width="72" height="18"/>
@@ -911,16 +921,16 @@
         <!--Account-->
         <scene sceneID="Shm-GR-kcW">
             <objects>
-                <viewController title="Account" id="Pbd-aX-NBA" customClass="AccountScreen" customModule="FoodCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Account" id="Pbd-aX-NBA" customClass="AccountScreen" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ske-Nb-okn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddn-RM-Yxf" userLabel="billList" customClass="RecieptList" customModule="FoodCafe" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddn-RM-Yxf" userLabel="billList" customClass="RecieptList" customModule="Cafe_Manager" customModuleProvider="target">
                                 <rect key="frame" x="10" y="54" width="394" height="729"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecieptCell" rowHeight="167" id="rVi-c9-nF0" customClass="DailyRecieptCell" customModule="FoodCafe" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecieptCell" rowHeight="167" id="rVi-c9-nF0" customClass="DailyRecieptCell" customModule="Cafe_Manager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="394" height="167"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rVi-c9-nF0" id="hy6-d1-pxl">
@@ -1073,6 +1083,7 @@ Item 2</string>
         </scene>
     </scenes>
     <resources>
+        <image name="folder" catalog="system" width="128" height="95"/>
         <image name="logo" width="48" height="48"/>
     </resources>
 </document>

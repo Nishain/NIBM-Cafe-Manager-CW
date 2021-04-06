@@ -44,6 +44,8 @@
 		949668472619D0F2001EA192 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949668462619D0F2001EA192 /* OrderStatus.swift */; };
 		949668492619D166001EA192 /* OrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949668482619D166001EA192 /* OrderScreen.swift */; };
 		9496684B2619D1EA001EA192 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9496684A2619D1EA001EA192 /* CircleButton.swift */; };
+		94BC80D4261B45D900D019B6 /* NewProductScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BC80D3261B45D900D019B6 /* NewProductScreen.swift */; };
+		94BC80D6261BDE8F00D019B6 /* UnEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BC80D5261BDE8F00D019B6 /* UnEditableTextField.swift */; };
 		DCA8BEDD079BB4F7A0009E93 /* Pods_Cafe_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BBD4F82ACDE36686377402B /* Pods_Cafe_Manager.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,8 @@
 		949668462619D0F2001EA192 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		949668482619D166001EA192 /* OrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderScreen.swift; sourceTree = "<group>"; };
 		9496684A2619D1EA001EA192 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		94BC80D3261B45D900D019B6 /* NewProductScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductScreen.swift; sourceTree = "<group>"; };
+		94BC80D5261BDE8F00D019B6 /* UnEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnEditableTextField.swift; sourceTree = "<group>"; };
 		DC2C401893D9E46D5F7F79F2 /* Pods-Cafe-Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cafe-Manager.release.xcconfig"; path = "Target Support Files/Pods-Cafe-Manager/Pods-Cafe-Manager.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -243,6 +247,7 @@
 				949668482619D166001EA192 /* OrderScreen.swift */,
 				941B3F8A261B07F5003586DF /* OrderMoreDetails.swift */,
 				9466F178261B1C9B00A697C3 /* AccountScreen.swift */,
+				94BC80D3261B45D900D019B6 /* NewProductScreen.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				942B45412618BD1900C169AE /* UIPaddingLabel.swift */,
 				940CF67A2619693E0007E37B /* AlertPopup.swift */,
 				9496684A2619D1EA001EA192 /* CircleButton.swift */,
+				94BC80D5261BDE8F00D019B6 /* UnEditableTextField.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -464,6 +470,7 @@
 				942B45462618BD1900C169AE /* Toast.swift in Sources */,
 				942B45492618BD1900C169AE /* AvatarImage.swift in Sources */,
 				942B44F42618A5B900C169AE /* ViewController.swift in Sources */,
+				94BC80D6261BDE8F00D019B6 /* UnEditableTextField.swift in Sources */,
 				949668432619C564001EA192 /* CategoryList.swift in Sources */,
 				942B452F2618BA2D00C169AE /* AuthScreen.swift in Sources */,
 				9466F17D261B1D7C00A697C3 /* RecieptList.swift in Sources */,
@@ -483,6 +490,7 @@
 				942B44F02618A5B900C169AE /* AppDelegate.swift in Sources */,
 				942B44F22618A5B900C169AE /* SceneDelegate.swift in Sources */,
 				940CF67D2619895A0007E37B /* CustomUIViewContainer.swift in Sources */,
+				94BC80D4261B45D900D019B6 /* NewProductScreen.swift in Sources */,
 				941B3F8F261B12EB003586DF /* OrderItemList.swift in Sources */,
 				941B3F8D261B12B5003586DF /* FoodItemCell.swift in Sources */,
 				942B45452618BD1900C169AE /* PaddingTextUI.swift in Sources */,

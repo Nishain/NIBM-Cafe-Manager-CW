@@ -91,6 +91,7 @@ class OrderScreen: UITableViewController {
             cell.statusContainer.addTarget(self, action: #selector(onOrderRejected(sender:)), for: .touchUpInside)
             cell.secondaryButton.isHidden = false
         }else{
+            cell.statusContainer.removeTarget(self, action: #selector(onOrderRejected(sender:)), for: .touchUpInside)
             cell.statusContainer.backgroundColor = #colorLiteral(red: 1, green: 0.4706886616, blue: 0.1020977057, alpha: 1)
             cell.secondaryButton.isHidden = true
         }
