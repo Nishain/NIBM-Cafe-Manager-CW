@@ -13,8 +13,16 @@ class FoodScreen: UIViewController {
 
     let db = Firestore.firestore()
     let imageStore = Storage.storage()
-    
-
+    var catergories:[String:String] = [:]
+    func loadCategories(){
+        db.collection("category").getDocuments(completion: {snapshot,err in
+            for doc in snapshot?.documents ?? []{
+                self.catergories[doc.documentID] = (doc.data()["name"] as! String)
+            }
+            self.loadData()
+        })
+        
+    }
     func loadData(){
         var foodList:[FoodDetail] = []
         db.collection("Foods").getDocuments(completion: {snapshot,err in
@@ -22,6 +30,7 @@ class FoodScreen: UIViewController {
                print(err)
             }
             //each docuemnt reflect detail about a single food item..
+            
             for (index,document) in (snapshot?.documents ?? []).enumerated(){
                 let food = document.data() //single food instance..
                 //populating date into data model....
@@ -31,7 +40,8 @@ class FoodScreen: UIViewController {
                     promotion:(food["promotion"] as? Int) ?? 0,
                     cost: food["cost"] as! Int,
                     phoneNumber: food["phoneNumber"] as? String,
-                    type: food["type"] as! String
+                    type: self.catergories[food["category"] as! String] ?? "unknown category"
+                    
                 )
                 //if contains a promotion field then add the promotion
                 if(food.keys.contains("promotion")){
@@ -71,7 +81,7 @@ class FoodScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //first time load fetch all foods without category filtering
-        loadData()
+        loadCategories()
   
     }
     @IBAction func onSignOut(_ sender: Any) {
