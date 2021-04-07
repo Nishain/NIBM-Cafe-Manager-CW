@@ -10,7 +10,7 @@
         <!--Item-->
         <scene sceneID="OqE-uA-XfB">
             <objects>
-                <viewController id="1iZ-lT-Pd6" sceneMemberID="viewController">
+                <viewController id="1iZ-lT-Pd6" customClass="NewCategoryScreen" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9KF-hq-qu6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,6 +40,9 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onCategoryAdded:" destination="1iZ-lT-Pd6" eventType="touchUpInside" id="qgw-1x-gxG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -85,6 +88,10 @@
                         <viewLayoutGuide key="safeArea" id="VFD-yd-RPH"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="1Og-0b-1g8"/>
+                    <connections>
+                        <outlet property="categoryList" destination="pcI-pH-Ajs" id="SAO-Xu-D4a"/>
+                        <outlet property="categoryNameTxt" destination="qI2-dI-YgP" id="HGu-hu-m5d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbj-B9-KuE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -458,10 +465,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oDD-Th-A42" userLabel="textFieldStack">
-                                <rect key="frame" x="50" y="379" width="314" height="138.5"/>
+                                <rect key="frame" x="50" y="361" width="314" height="174.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nishain.atomic@gmail.com" borderStyle="bezel" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jzI-mx-rHi" userLabel="email" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                         <userDefinedRuntimeAttributes>
@@ -471,7 +478,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Phonenumber" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Yd-3v-tG8" userLabel="phonenumber" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="36" width="314" height="28.5"/>
+                                        <rect key="frame" x="0.0" y="45" width="314" height="37.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         <userDefinedRuntimeAttributes>
@@ -481,7 +488,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="bezel" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HhH-c3-0Ym" userLabel="password" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="74.5" width="314" height="27"/>
+                                        <rect key="frame" x="0.0" y="92.5" width="314" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -491,7 +498,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4S-Wf-P0a" userLabel="confirmPassword" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="111.5" width="314" height="27"/>
+                                        <rect key="frame" x="0.0" y="138.5" width="314" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -503,7 +510,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4N7-LO-ut3">
-                                <rect key="frame" x="87" y="212.5" width="240" height="128"/>
+                                <rect key="frame" x="87" y="194.5" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="HR8-si-drg"/>
                                     <constraint firstAttribute="height" constant="128" id="RTP-hm-uU0"/>
@@ -516,7 +523,7 @@
                                 </variation>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="g99-j1-xub" userLabel="buttonStack">
-                                <rect key="frame" x="50" y="537.5" width="314" height="58"/>
+                                <rect key="frame" x="50" y="555.5" width="314" height="58"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDj-Nq-dYl" customClass="RoundBtn" customModule="Cafe_Manager" customModuleProvider="target">
                                         <rect key="frame" x="121" y="0.0" width="72" height="18"/>
