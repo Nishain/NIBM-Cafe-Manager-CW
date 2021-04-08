@@ -18,4 +18,5 @@ class StaticInfoManager {
     ]
     static let cellDateFormat = "yy/MM/dd HH:mm"
     static let dateOnly = "yy/MM/dd"
+    static let unknownCategory = "unknown category"
 }

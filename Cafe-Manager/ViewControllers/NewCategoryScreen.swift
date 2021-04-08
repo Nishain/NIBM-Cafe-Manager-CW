@@ -12,7 +12,12 @@ class NewCategoryScreen: UIViewController {
     
     @IBOutlet weak var categoryNameTxt: UITextField!
     @IBOutlet weak var categoryList: CategoryList!
+    var didDataLoaded = false
     override func viewDidLoad() {
+        categoryList.parentContext = self
+        if didDataLoaded{
+            categoryList.categories = (tabBarController as! StoreRootController).catergories
+        }
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

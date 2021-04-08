@@ -9,33 +9,32 @@
 import UIKit
 import FirebaseFirestore
 class CategoryList: UITableView, UITableViewDelegate, UITableViewDataSource {
-    var catergories:[(id:String,name:String)] = []
+    var categories: [(id: String, name: String)] = []
+    var parentContext:UIViewController!
+    
     let db = Firestore.firestore()
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        catergories.count
+        categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "catergoryCell")!
         cell.frame = cell.frame.inset(by: UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10))
         let text = cell.contentView.subviews[0] as! UILabel
-        text.text = catergories[indexPath.row].name
+        text.text = categories[indexPath.row].name
         return cell
     }
-    func loadCategories(){
-        db.collection("category").getDocuments(completion: {data,err in
-            self.catergories = (data?.documents ?? []).map({
-                (id:$0.documentID,
-                 name:$0.data()["name"] as! String)
-            })
-            self.reloadData()
-        })
-    }
+    
     func setDragDelete(index:Int)->[UIContextualAction]{
         let closeAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            self.db.collection("category").document(self.catergories[index].id).delete()
-            self.catergories.remove(at: index)
-            self.reloadData()
+            let alert = UIAlertController(title: "Are you sure", message: "Deleting a category will result in all products under category '\(self.categories[index].name)' will classified as unknown products, recreating the category won't undo this effect.Continue?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes remove", style: .destructive, handler: { action in
+                self.db.collection("category").document(self.categories[index].id).delete()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            self.parentContext.present(alert,animated: true)
             success(true)
         })
         closeAction.backgroundColor = .red
@@ -56,19 +55,13 @@ class CategoryList: UITableView, UITableViewDelegate, UITableViewDataSource {
                 return
             }
             var ref:DocumentReference?
-            ref = self.db.collection("category").addDocument(data: ["name":name],completion: {err in
-                if err == nil{
-                    self.catergories.append((id:ref!.documentID,name:name))
-                    self.reloadData()
-                }
-            })
+            ref = self.db.collection("category").addDocument(data: ["name":name],completion: nil)
         })
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         delegate = self
         dataSource = self
-        loadCategories()
     }
     /*
     // Only override draw() if you perform custom drawing.

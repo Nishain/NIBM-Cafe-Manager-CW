@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 struct  FoodDetail {
+    var id:String?
     var image: UIImage?
     var title:String
     var foodDescription:String?

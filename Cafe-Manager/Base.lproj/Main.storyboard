@@ -378,7 +378,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DXF-5D-DZy">
+                                    <imageView clipsSubviews="YES" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DXF-5D-DZy">
                                         <rect key="frame" x="0.0" y="163.5" width="374" height="125.5"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -395,16 +395,27 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Discount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSV-ba-yE8" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PKQ-ku-gYB">
                                         <rect key="frame" x="0.0" y="344.5" width="374" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
-                                                <real key="value" value="7"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Discount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSV-ba-yE8" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v35-gC-HSe">
+                                                <rect key="frame" x="360" y="0.0" width="14" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSU-tD-vb5">
                                         <rect key="frame" x="0.0" y="388.5" width="374" height="31"/>
                                         <subviews>
@@ -432,11 +443,28 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPC-HM-BW5" customClass="RoundBtn" customModule="Cafe_Manager" customModuleProvider="target">
+                                <rect key="frame" x="186.5" y="709" width="41" height="30"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Add +">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onProductAdding:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UuI-iy-nLs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="f8W-0V-WHk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="BY0-G7-VpP"/>
                             <constraint firstAttribute="trailing" secondItem="f8W-0V-WHk" secondAttribute="trailing" constant="20" id="HeY-IC-RJZ"/>
+                            <constraint firstItem="WPC-HM-BW5" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="R4B-bU-lQq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WPC-HM-BW5" secondAttribute="bottom" multiplier="1.1" id="gNM-ad-01c"/>
                             <constraint firstItem="f8W-0V-WHk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qO5-C3-XS5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -877,10 +905,10 @@
             </objects>
             <point key="canvasLocation" x="2235" y="839"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Store Root Controller-->
         <scene sceneID="uzI-0l-nxn">
             <objects>
-                <tabBarController storyboardIdentifier="storePage" automaticallyAdjustsScrollViewInsets="NO" id="B8z-7s-0nY" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="storePage" automaticallyAdjustsScrollViewInsets="NO" id="B8z-7s-0nY" customClass="StoreRootController" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Toy-6o-Bau">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9400F3D7261D952A00A708F4 /* NewCategoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9400F3D6261D952A00A708F4 /* NewCategoryScreen.swift */; };
+		9400F3DB261DB98700A708F4 /* StoreRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9400F3DA261DB98700A708F4 /* StoreRootController.swift */; };
 		940CF67B2619693E0007E37B /* AlertPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940CF67A2619693E0007E37B /* AlertPopup.swift */; };
 		940CF67D2619895A0007E37B /* CustomUIViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940CF67C2619895A0007E37B /* CustomUIViewContainer.swift */; };
 		940CF68026198C2B0007E37B /* FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940CF67F26198C2B0007E37B /* FoodList.swift */; };
@@ -75,6 +76,7 @@
 		07CE1CC6B17DEE182BD76FF5 /* Pods-Cafe-Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cafe-Manager.debug.xcconfig"; path = "Target Support Files/Pods-Cafe-Manager/Pods-Cafe-Manager.debug.xcconfig"; sourceTree = "<group>"; };
 		4BBD4F82ACDE36686377402B /* Pods_Cafe_Manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cafe_Manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9400F3D6261D952A00A708F4 /* NewCategoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryScreen.swift; sourceTree = "<group>"; };
+		9400F3DA261DB98700A708F4 /* StoreRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRootController.swift; sourceTree = "<group>"; };
 		940CF67A2619693E0007E37B /* AlertPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopup.swift; sourceTree = "<group>"; };
 		940CF67C2619895A0007E37B /* CustomUIViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIViewContainer.swift; sourceTree = "<group>"; };
 		940CF67F26198C2B0007E37B /* FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodList.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				946B5425261C26C200C946B2 /* StartupNavigationController.swift */,
 				946B5427261C2AD400C946B2 /* MainScreenContainer.swift */,
 				9400F3D6261D952A00A708F4 /* NewCategoryScreen.swift */,
+				9400F3DA261DB98700A708F4 /* StoreRootController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -276,8 +279,8 @@
 				942B453E2618BD1900C169AE /* RoundBtn.swift */,
 				942B45402618BD1900C169AE /* Toast.swift */,
 				942B45412618BD1900C169AE /* UIPaddingLabel.swift */,
-				940CF67A2619693E0007E37B /* AlertPopup.swift */,
 				9496684A2619D1EA001EA192 /* CircleButton.swift */,
+				940CF67A2619693E0007E37B /* AlertPopup.swift */,
 				94BC80D5261BDE8F00D019B6 /* UnEditableTextField.swift */,
 			);
 			path = UI;
@@ -518,6 +521,7 @@
 				942B44F02618A5B900C169AE /* AppDelegate.swift in Sources */,
 				942B44F22618A5B900C169AE /* SceneDelegate.swift in Sources */,
 				940CF67D2619895A0007E37B /* CustomUIViewContainer.swift in Sources */,
+				9400F3DB261DB98700A708F4 /* StoreRootController.swift in Sources */,
 				94BC80D4261B45D900D019B6 /* NewProductScreen.swift in Sources */,
 				941B3F8F261B12EB003586DF /* OrderItemList.swift in Sources */,
 				941B3F8D261B12B5003586DF /* FoodItemCell.swift in Sources */,
