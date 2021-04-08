@@ -84,7 +84,7 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
         sender.isUserInteractionEnabled = true
     }
     @IBAction func onProductAdding(_ sender: Any) {
-        if checkIfEmpty(fields: [productName,productDescription,productPrice,category,discount]){
+        if checkIfEmpty(fields: [productName,productDescription,productPrice,category]){
             return
         }
         if foodImage.tag == 2{
@@ -92,23 +92,31 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
             return
         }
         let selectedCategoryIndex = (category.inputView as! UIPickerView).selectedRow(inComponent: 0)
-        let foodDetail = FoodDetail(image: resizeImage(image: foodImage.image!, targetSize:CGSize(width: 200, height: 200)),
+        var foodDetail = FoodDetail(image: resizeImage(image: foodImage.image!, targetSize:CGSize(width: 200, height: 200)),
                    title: productName.text!, foodDescription: productDescription.text!,
-                   promotion: Int(discount.text!)!, cost: Int(productPrice.text!)!, phoneNumber: "dummy", type: categories[selectedCategoryIndex].id)
+                   cost: Int(productPrice.text!)!, phoneNumber: "dummy", type: categories[selectedCategoryIndex].id)
+        if (discount.text ?? "").count > 0 {
+            foodDetail.promotion = Int(discount.text!)!
+        }
+        foodDetail.availability = setAsItemCheck.isOn
         var ref:DocumentReference?
-        ref = db.collection("Foods").addDocument(data: [
+        var mappingData:[String:Any] = [
             "title": foodDetail.title,
             "description": foodDetail.foodDescription!,
             "promotion": foodDetail.promotion,
             "cost": foodDetail.cost,
             "phoneNumber": foodDetail.phoneNumber!,
             "category":foodDetail.type
-        ], completion: {error in
+        ]
+        if !foodDetail.availability{
+            mappingData["availability"] = false
+        }
+        ref = db.collection("Foods").addDocument(data: mappingData, completion: {error in
             if error == nil{
                 self.storage.reference(withPath: "foods/\(ref!.documentID).jpg").putData(foodDetail.image!.jpegData(compressionQuality: 1.0)!,metadata: nil,completion: {metaData,error in
                     if error == nil{
                         let rootController = (self.tabBarController! as! StoreRootController)
-                        rootController.postProvideImageByDocumentID(docID: ref!.documentID, image: foodDetail.image!)
+                        rootController.retrieveNewlyAddedFood(docID: ref!.documentID, image: foodDetail.image!)
                         self.tabBarController?.selectedIndex = 0
                     }else{
                         print(error!)

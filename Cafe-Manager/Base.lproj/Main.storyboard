@@ -785,6 +785,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cost" destination="Ox1-nq-Wi3" id="nrd-vm-IFH"/>
+                                            <outlet property="foodAvailabiltySwitch" destination="UNk-VI-8na" id="AbR-be-dpq"/>
                                             <outlet property="foodDescription" destination="oSE-zS-mMt" id="Aaf-4S-FU2"/>
                                             <outlet property="foodImage" destination="Xad-YS-F1B" id="pR6-Yi-MHh"/>
                                             <outlet property="foodTitle" destination="Sgu-Tp-BpA" id="eqE-Ht-u7d"/>

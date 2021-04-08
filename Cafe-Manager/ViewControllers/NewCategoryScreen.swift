@@ -28,6 +28,9 @@ class NewCategoryScreen: UIViewController {
         if categoryNameTxt.text?.count == 0{
             return alert.infoPop(title: "Missing name", body: "Please enter a unique category name")
         }
+        if categoryNameTxt.text == StaticInfoManager.unknownCategory{
+            return alert.infoPop(title: "Invalid name", body: "You cannot add a category with name '\(StaticInfoManager.unknownCategory)' as it is predefined")
+        }
         categoryList.addNewCategory(name: categoryNameTxt.text!,alert:alert)
     }
     

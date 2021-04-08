@@ -15,16 +15,25 @@ class FoodSmallDetailCell: UITableViewCell {
     @IBOutlet weak var cost: UILabel!
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var foodTitle: UILabel!
+    @IBOutlet weak var foodAvailabiltySwitch: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        foodAvailabiltySwitch.addTarget(self, action: #selector(availabilitySwap(sender:)), for: .valueChanged)
         // Initialization code
     }
-
+    var onAvailabilityChanged:((Bool)->Void)!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-
+    @objc func availabilitySwap(sender:UISwitch){
+        if sender.isOn{
+            contentView.alpha = 1.0
+        }else{
+            contentView.alpha = 0.5
+        }
+        onAvailabilityChanged(sender.isOn)
+    }
 }

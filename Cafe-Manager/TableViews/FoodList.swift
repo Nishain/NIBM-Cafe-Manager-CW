@@ -1,8 +1,9 @@
 import UIKit
 import SkeletonView
+import FirebaseFirestore
 class FoodList: UITableView,UITableViewDelegate,UITableViewDataSource {
     var categories: [(id: String, name: String)] = []
-
+    let db = Firestore.firestore()
     required init?(coder: NSCoder) {
         super.init(coder:coder)
         delegate = self
@@ -63,12 +64,18 @@ class FoodList: UITableView,UITableViewDelegate,UITableViewDataSource {
         let filteredData = data.filter({$0.type == getCategoryNameByIndex(index: indexPath.section)})
         let cell = tableView.dequeueReusableCell(withIdentifier:"foodDetail") as! FoodSmallDetailCell
         if(data.count > 0){
-        transverse(view: cell.contentView, mode: false,exceptionView: cell.foodImage)
-        let foodDetail = filteredData[indexPath.row]
-        if foodDetail.image != nil{
-            cell.foodImage.hideSkeleton()
-            cell.foodImage.image = data[indexPath.row].image
-        }
+            transverse(view: cell.contentView, mode: false,exceptionView: cell.foodImage)
+            let foodDetail = filteredData[indexPath.row]
+            if foodDetail.image != nil{
+                cell.foodImage.hideSkeleton()
+                cell.foodImage.image = data[indexPath.row].image
+            }
+            cell.foodAvailabiltySwitch.isOn = foodDetail.availability
+            if foodDetail.availability{
+                cell.contentView.alpha = 1
+            }else{
+                cell.contentView.alpha = 0.5
+            }
             cell.foodImage?.image = foodDetail.image
             cell.foodTitle.text = foodDetail.title
             cell.foodDescription.text = foodDetail.foodDescription
@@ -79,7 +86,9 @@ class FoodList: UITableView,UITableViewDelegate,UITableViewDataSource {
                 cell.promotion.isHidden = true
             }
             cell.cost.text = "Rs.\(foodDetail.cost)"
-        
+            cell.onAvailabilityChanged = {availability in
+                self.db.collection("Foods").document(foodDetail.id!).updateData(["availability":availability])
+            }
         }else{
             cell.foodDescription.numberOfLines = 2
             transverse(view: cell.contentView, mode: true)

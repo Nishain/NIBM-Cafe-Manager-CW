@@ -17,5 +17,6 @@ struct  FoodDetail {
     var cost:Int
     var phoneNumber:String?
     var type:String
+    var availability = true
 }
 

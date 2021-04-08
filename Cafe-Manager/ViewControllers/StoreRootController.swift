@@ -65,36 +65,45 @@ class StoreRootController: UITabBarController {
             foodScreen.foodList.data[position].image = image
         }
     }
-    func postProvideImageByDocumentID(docID:String,image:UIImage){
-        let index = foodData.firstIndex(where: {$0.id == docID})
-        if index == nil{
-            return
+    func retrieveNewlyAddedFood(docID:String,image:UIImage){
+        db.collection("Foods").document(docID).getDocument(completion: {data,err in
+            var foodModel = self.populateDataToModel(doc: data!)
+            foodModel.image = image
+            self.foodData.append(foodModel)
+            self.refreshFoodList()
+        })
+    }
+    func populateDataToModel(doc:DocumentSnapshot)->FoodDetail{
+        let food = doc.data()!
+        var foodDetail = FoodDetail(
+            id:doc.documentID,
+            image: nil,
+            title: food["title"] as! String,
+            foodDescription: food["description"] as? String,
+            promotion:(food["promotion"] as? Int) ?? 0,
+            cost: food["cost"] as! Int,
+            phoneNumber: food["phoneNumber"] as? String,
+            type: self.catergories.first(where: {$0.id == (food["category"] as! String)})?.name ?? StaticInfoManager.unknownCategory,
+            availability: (food["availability"] as? Bool) ?? true
+        )
+        if(food.keys.contains("promotion")){
+            foodDetail.promotion = food["promotion"] as! Int
         }
-        postLoadFoodImage(position:index!, image: image)
+        return foodDetail
     }
     func loadData(){
-        db.collection("Foods").addSnapshotListener({snapshot,err in
+        db.collection("Foods").getDocuments(completion:{snapshot,err in
             if(err != nil){
                print(err)
             }
             //each docuemnt reflect detail about a single food item..
             self.foodData = []
             for (index,document) in (snapshot?.documents ?? []).enumerated(){
-                let food = document.data() //single food instance..
+                 //single food instance..
                 //populating date into data model....
-                var foodDetail = FoodDetail(image: nil,
-                    title: food["title"] as! String,
-                    foodDescription: food["description"] as? String,
-                    promotion:(food["promotion"] as? Int) ?? 0,
-                    cost: food["cost"] as! Int,
-                    phoneNumber: food["phoneNumber"] as? String,
-                    type: self.catergories.first(where: {$0.id == (food["category"] as! String)})?.name ?? StaticInfoManager.unknownCategory//[food["category"] as! String] ?? "unknown category"
-                    
-                )
+                let foodDetail = self.populateDataToModel(doc: document)
                 //if contains a promotion field then add the promotion
-                if(food.keys.contains("promotion")){
-                    foodDetail.promotion = food["promotion"] as! Int
-                }
+                
                 
               
                 
@@ -106,7 +115,7 @@ class StoreRootController: UITabBarController {
                         
                         switch StorageErrorCode(rawValue: imageErr!._code) {
                         case .objectNotFound:
-                            self.foodData[index].id = document.documentID
+                            
                             //if the image is not available in the database then display a default image
                             self.postLoadFoodImage(position: index,image: #imageLiteral(resourceName: "emptyFood"))
                         default:
