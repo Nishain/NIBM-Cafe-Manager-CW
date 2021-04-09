@@ -8,7 +8,9 @@
 
 import Foundation
 struct OrderStatus {
+    var databaseID:String?
     var orderID:Int
     var customerName:String!
     var status:Int
+    var customerID:String
 }

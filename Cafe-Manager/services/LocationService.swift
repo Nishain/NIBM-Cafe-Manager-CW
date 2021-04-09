@@ -18,7 +18,7 @@ class LocationService: CLLocationManager {
     func status()->CLAuthorizationStatus{
         return CLLocationManager.authorizationStatus()
     }
-    
+    var latestLocation:CLLocation?
     //check if location permission is given
     func canConinue()->Bool{
         let state = status()
@@ -44,6 +44,7 @@ extension LocationService:CLLocationManagerDelegate{
         
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        latestLocation = locations.first
         onLocationRecived?(locations.first)
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

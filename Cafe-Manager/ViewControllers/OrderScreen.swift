@@ -7,29 +7,93 @@
 //
 
 import UIKit
-
+import FirebaseFirestore
+import CoreLocation
+import AVFoundation
 class OrderScreen: UITableViewController {
-    var orders:[OrderStatus] = [
-        OrderStatus(orderID: 432, customerName: "Nishain", status: 2),
-        OrderStatus(orderID: 432, customerName: "Nishain", status: 2),
-        OrderStatus(orderID: 432, customerName: "Nishain", status: 3),
-        OrderStatus(orderID: 444, customerName: "Nishain", status: 1),
-        OrderStatus(orderID: 432, customerName: "Nishain", status: 4),
-        OrderStatus(orderID: 432, customerName: "Nishain", status: 3),
-        OrderStatus(orderID: 432, customerName: "Nishain", status: 3),
-        OrderStatus(orderID: 432, customerName: "Nishain", status: 4),
-        OrderStatus(orderID: 777, customerName: "Nishain", status: 1)
-    ]
+    let db = Firestore.firestore()
+    var orders:[OrderStatus] = []
+    let locationService:LocationService = LocationService()
+    var player:AVAudioPlayer?
     override func viewDidLoad(){
     //sortOrders()
-      sectionHeadings = getSectionHeadings()
+        
+      loadOrders()
     }
-    
-    func sortOrders(){
-        orders = orders.sorted(by: {$0.status > $1.status})
+    func loadOrders(){
+        db.collection("ordersList").addSnapshotListener({query,error in
+            print(error)
+            let orderList:[OrderStatus] = (query?.documents ?? []).map({
+                let data = $0.data()
+                let orderStatus = OrderStatus(databaseID: $0.documentID,
+                                              orderID:data["id"] as! Int,
+                                              customerName: data["customerName"] as? String,
+                                              status: data["status"] as! Int,
+                                              customerID: data["uid"] as! String)
+                return orderStatus
+            })
+            if self.orders.count == 0{
+                self.checkForArrivingStatus()
+            }
+            self.orders = orderList
+            self.getSectionHeadings()
+            self.tableView.reloadData()
+            
+        })
+    }
+   
+    func checkForArrivingStatus(){
+        
+        db.collection("userLocation").addSnapshotListener({documents,error in
+            let locations = (documents?.documents ?? []).map({
+                UserLocation(location: $0.data()["location"] as! GeoPoint, uid: $0.documentID)
+            })
+            self.locationService.requestLocation()
+            self.locationService.onLocationRecived = { shopLocation in
+                for location in locations{
+                    var orderToBeUpadated = self.orders.first(where: {$0.customerID == location.uid && $0.status == 3})
+                    if orderToBeUpadated == nil{
+                        continue
+                    }
+                    
+                    let distance = shopLocation?.distance(from: CLLocation(latitude: location.location.latitude, longitude: location.location.latitude)) ?? 100
+                    print("distance \(distance)")
+                    if distance <= 10{
+                            orderToBeUpadated!.status += 1
+                        self.db.collection("ordersList").document(orderToBeUpadated!.databaseID!).updateData(["status":orderToBeUpadated!.status],completion: { error in
+                            if error == nil{
+                                self.playSound()
+                            }
+                        })
+                    }
+                }
+            }
+            
+        })
+        
+    }
+    func playSound() {
+        let pathToSound = Bundle.main.path(forResource: "notification", ofType: "mp3")!
+        let url = URL(fileURLWithPath: pathToSound)
+        do {
+           // try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            //try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+           // let player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:*/
+           
+            player = try AVAudioPlayer(contentsOf: url)
+            player!.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     var sectionHeadings:[(status:Int,frequesncy:Int)] = []
-    func getSectionHeadings()->[(Int,Int)]{
+    func getSectionHeadings(){
+        
         var sections:[(status:Int,frequesncy:Int)] = []
         
         for status in orders.map({$0.status}){
@@ -41,8 +105,7 @@ class OrderScreen: UITableViewController {
                 sections.append((status,1))
             }
         }
-        sections = sections.sorted(by: {$0.status < $1.status})
-        return sections
+        sectionHeadings = sections.sorted(by: {$0.status < $1.status})
     }
    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -102,7 +165,7 @@ class OrderScreen: UITableViewController {
     
     @objc func onOrderRejected(sender:UIButton){
         orders.remove(at: sender.tag)
-        sectionHeadings = getSectionHeadings()
+        getSectionHeadings()
         tableView.reloadData()
     }
     func onOrderSelected(source:OrderStatus){

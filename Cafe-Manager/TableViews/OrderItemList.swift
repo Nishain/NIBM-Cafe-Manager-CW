@@ -9,7 +9,7 @@
 import UIKit
 
 class OrderItemList: UITableView, UITableViewDelegate, UITableViewDataSource {
-    var data:[OrderItems] = [OrderItems(quantity: 2, foodName: "Carrot", price: 20),OrderItems(quantity: 5, foodName: "Mangostein", price: 100)]
+    var data:[OrderItems] = []
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.count
     }
