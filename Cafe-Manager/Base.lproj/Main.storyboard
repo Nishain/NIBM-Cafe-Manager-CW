@@ -960,8 +960,24 @@ next stage</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="0xT-Ct-QSj">
+                                <rect key="frame" x="10" y="54" width="394" height="38"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVM-wb-kkm">
+                                        <rect key="frame" x="0.0" y="0.0" width="52" height="38"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" title="Print">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPrintAll:" destination="Pbd-aX-NBA" eventType="touchUpInside" id="OHN-hb-TwJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddn-RM-Yxf" userLabel="billList" customClass="RecieptList" customModule="Cafe_Manager" customModuleProvider="target">
-                                <rect key="frame" x="10" y="54" width="394" height="729"/>
+                                <rect key="frame" x="10" y="92" width="394" height="691"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecieptCell" rowHeight="167" id="rVi-c9-nF0" customClass="DailyRecieptCell" customModule="Cafe_Manager" customModuleProvider="target">
@@ -1106,10 +1122,13 @@ Item 2</string>
                             <constraint firstItem="gnn-Vf-luE" firstAttribute="trailing" secondItem="ddn-RM-Yxf" secondAttribute="trailing" constant="10" id="Jcv-1w-3av"/>
                             <constraint firstItem="gnn-Vf-luE" firstAttribute="bottom" secondItem="3aT-Ra-8sb" secondAttribute="bottom" constant="10" id="OmT-Zj-vuB"/>
                             <constraint firstItem="ddn-RM-Yxf" firstAttribute="leading" secondItem="gnn-Vf-luE" secondAttribute="leading" constant="10" id="YDF-o2-Hys"/>
-                            <constraint firstItem="ddn-RM-Yxf" firstAttribute="top" secondItem="gnn-Vf-luE" secondAttribute="top" constant="10" id="lOF-Dr-TzJ"/>
+                            <constraint firstItem="0xT-Ct-QSj" firstAttribute="top" secondItem="gnn-Vf-luE" secondAttribute="top" constant="10" id="jzX-tZ-VPU"/>
+                            <constraint firstItem="ddn-RM-Yxf" firstAttribute="top" secondItem="0xT-Ct-QSj" secondAttribute="bottom" id="lOF-Dr-TzJ"/>
                             <constraint firstItem="3aT-Ra-8sb" firstAttribute="top" secondItem="ddn-RM-Yxf" secondAttribute="bottom" id="oBH-Qr-Oqs"/>
                             <constraint firstItem="ddn-RM-Yxf" firstAttribute="top" secondItem="gnn-Vf-luE" secondAttribute="top" constant="10" id="oK1-jN-O00"/>
+                            <constraint firstItem="0xT-Ct-QSj" firstAttribute="trailing" secondItem="ddn-RM-Yxf" secondAttribute="trailing" id="p6u-J3-298"/>
                             <constraint firstItem="3aT-Ra-8sb" firstAttribute="trailing" secondItem="ddn-RM-Yxf" secondAttribute="trailing" id="q9t-92-wFQ"/>
+                            <constraint firstItem="0xT-Ct-QSj" firstAttribute="leading" secondItem="ddn-RM-Yxf" secondAttribute="leading" id="xCI-PD-u1l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gnn-Vf-luE"/>
                         <variation key="default">

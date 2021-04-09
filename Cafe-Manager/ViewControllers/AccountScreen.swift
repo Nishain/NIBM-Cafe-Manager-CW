@@ -142,7 +142,10 @@ class AccountScreen: UIViewController, UIImagePickerControllerDelegate, UINaviga
         refreshData(newData: filteredData)
     }
     
-   
+    @IBAction func onPrintAll(_ sender: Any) {
+        billList.printText(text: billList.createTable(tables:data))
+    }
+    
     @objc func endEditingDate(sender:UIBarButtonItem){
         let focusedField:UITextField = sender.tag == 1 ? beforeDate : toDate
         let focusedFieldDatePicker = focusedField.inputView as! UIDatePicker

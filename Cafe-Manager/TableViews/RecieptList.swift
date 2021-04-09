@@ -40,29 +40,34 @@ class RecieptList: UITableView, UITableViewDelegate, UITableViewDataSource {
         }
         cell.onPrintRequested = {
             //let jsonData = try? JSONSerialization.data(withJSONObject: JSONEncoder().encode(reciept), options: .prettyPrinted)
-            self.printText(text: self.createTable(reciept: reciept))
+            self.printText(text: self.createTable(tables: [reciept]))
         }
         cell.totalPrice.text = String(reciept.totalCost)
         return cell
     }
-    func createTable(reciept:Reciept)->String{
+    func createTable(tables:[Reciept])->String{
         let headers = "<tr>"+["food Name","quantity","price"].map({"<th>\($0)</th>"}).joined() + "</tr>"
-       
-        let rows = reciept.products.map({
-            let data = [$0.foodName,String($0.quantity),String($0.originalPrice)]
-            return data.map({d in "<td>\(d)</td>"}).joined()
-        }) as [String]
-        let rowContent = rows.map({"<tr>\($0)</tr>"}).joined()
-        var html = "<table>\(headers + rowContent)</table>"
+        var html = ""
+        for reciept in tables{
+            let rows = reciept.products.map({
+                let data = [$0.foodName,String($0.quantity),String($0.originalPrice)]
+                return data.map({d in "<td>\(d)</td>"}).joined()
+            }) as [String]
+            let rowContent = rows.map({"<tr>\($0)</tr>"}).joined()
+            let dateRow = "<tr><span>\(reciept.date)</span></tr>"
+            let table = "<table>\(headers + dateRow + rowContent)</table>"
+            html += table
+        }
+        
         var htmlStyle = createStyleObject(object: ["table"], data: [
             "font-family":"arial, sans-serif",
             "border-collapse":"collapse",
             "width":"100%"
         ])
-        htmlStyle += createStyleObject(object: ["td","th"], data: [
+        htmlStyle += createStyleObject(object: ["td","th","span"], data: [
             "border":"px solid #dddddd",
-            "text-align":"left",
-            "font-size":"50px",
+            "text-align":"right",
+            "font-size":"25px",
             "padding":"8px"
         ])
         htmlStyle += createStyleObject(object: ["tr:nth-child(even)"], data: ["background-color":"#dddddd"])
