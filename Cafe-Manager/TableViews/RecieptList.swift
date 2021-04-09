@@ -15,15 +15,23 @@ class RecieptList: UITableView, UITableViewDelegate, UITableViewDataSource {
         data.count
     }
     
-
+    func formaetDate(source:String)->String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = StaticInfoManager.dateTimeFormat
+        let date = dateFormatter.date(from: source)
+        dateFormatter.dateFormat = "yyy-MM-dd"
+        return dateFormatter.string(from: date!)
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecieptCell") as! DailyRecieptCell
         let reciept = data[indexPath.row]
-        cell.date.text = reciept.date
+        
+        
+        cell.date.text = formaetDate(source: reciept.date)
         cell.priceFrequencyList.text = ""
         cell.itemList.text = ""
         for r in reciept.products{
-            cell.itemList.text! += "\(r.foodName)\n"
+            cell.itemList.text! += "\(r.foodName) x \(r.quantity)\n"
             cell.priceFrequencyList.text! += "Rs \(r.quantity * r.originalPrice)\n"
         }
         cell.totalPrice.text = String(reciept.totalCost)

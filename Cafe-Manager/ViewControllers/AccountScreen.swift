@@ -24,28 +24,23 @@ class AccountScreen: UIViewController, UIImagePickerControllerDelegate, UINaviga
     var isOnlySingleItemAdded = false
     let BEGINING_OF_TIME = "from begining"
     func loadData(){
-        db.document("user/\(auth.currentUser!.uid)").addSnapshotListener({snapshotDocuement,err in
+        db.collection("orderHistory").addSnapshotListener({data,err in
             
             if(err != nil){
                 print(err)
                 return
             }
-            var history = (snapshotDocuement?.data()?["history"] as? [[String:Any]]) ?? []
-            
-            
-           
-            self.isOnlySingleItemAdded = ((history.count - self.data.count) == 1)
-            self.data = []
-            if self.isOnlySingleItemAdded{
-                history = [history.last!]
-            }
-            for entity in history{
-     
-                var reciept = Reciept.decodeAsStruct(data: entity)//decode the dictionary entity back to structure
-                //the total cost will sum of products unit price * quantity in single reciept
-                reciept.totalCost = reciept.products.map({$0.originalPrice * $0.quantity}).reduce(0, +)
-                self.data.append(reciept)
-            }
+            self.data = (data?.documents ?? []).map({
+                let dataDictionary = $0.data()
+                var reciept = Reciept(date: dataDictionary["date"] as! String, products: [])
+                reciept.products = (dataDictionary["items"] as! [[String:Any]]).map({
+                    return OrderItemInfo(foodName: $0["name"] as! String, quantity: $0["quantity"] as! Int, originalPrice: $0["unitPrice"] as! Int)
+                })
+                reciept.totalCost = reciept.products.map({$0.quantity * $0.originalPrice}).reduce(0, +)
+                return reciept
+            })
+            self.isOnlySingleItemAdded = ((self.data.count - self.data.count) == 1)
+    
             //refresh data based on date filtering
             self.filterData(fromDate: self.beforeDate.text!, toDate: self.toDate.text!)
             })
@@ -127,7 +122,7 @@ class AccountScreen: UIViewController, UIImagePickerControllerDelegate, UINaviga
     //function to filter the list of reciept by date
     func filterData(fromDate:String,toDate:String){
         let foreignDataFormater = DateFormatter()
-        foreignDataFormater.dateFormat = StaticInfoManager.cellDateFormat
+        foreignDataFormater.dateFormat = StaticInfoManager.dateTimeFormat
         let filteredData = data.filter{
             /*Stripping the time component from date instnace this is because in example if after date is set today and if recipet has date like today + 8:30 AM then isUpperBoundSatisfied is never satisfied its after the today date.
              isLowerBoundSatisfied - before date condition, always satisfied if from begining of time

@@ -7,9 +7,9 @@
 //
 
 import Foundation
-struct PendingOrder:Codable {
+struct OrderItemInfo:Codable {
     var foodName:String
-    var quantity:Int
+    var quantity:Int = 1
     var originalPrice:Int
 
     func asDictionary()->[String:Any]{

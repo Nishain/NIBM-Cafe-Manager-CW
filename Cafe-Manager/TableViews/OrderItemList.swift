@@ -9,7 +9,7 @@
 import UIKit
 
 class OrderItemList: UITableView, UITableViewDelegate, UITableViewDataSource {
-    var data:[OrderItems] = []
+    var data:[OrderItemInfo] = []
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.count
     }
@@ -19,7 +19,7 @@ class OrderItemList: UITableView, UITableViewDelegate, UITableViewDataSource {
         let foodItem = data[indexPath.row]
         cell.foodName.text = foodItem.foodName
         cell.quantity.text = "\(foodItem.quantity) x "
-        cell.price.text = "Rs \(foodItem.price * foodItem.quantity)"
+        cell.price.text = "Rs \(foodItem.originalPrice * foodItem.quantity)"
         return cell
     }
     

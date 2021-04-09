@@ -27,10 +27,11 @@ class OrderMoreDetails: UIViewController {
      //   (document!.data()?["items"] ?? []) as! [[String:Any]]
         db.collection("ordersList").document(orderDetails.databaseID!).getDocument(completion: {document,err in
             let data  = document!.data()!["items"]  as! [[String:Any]]
-            let orderItemList:[OrderItems] = data.map({
-                OrderItems(quantity: $0["quantity"] as! Int,
-                           foodName: $0["foodName"] as? String,
-                           price:  $0["unitPrice"] as! Int)
+            
+            let orderItemList:[OrderItemInfo] = data.map({
+                OrderItemInfo(foodName: $0["foodName"] as! String,
+                    quantity: $0["quantity"] as! Int,
+                    originalPrice:  $0["unitPrice"] as! Int)
             })
             self.itemList.data = orderItemList
             self.itemList.reloadData()
@@ -40,11 +41,25 @@ class OrderMoreDetails: UIViewController {
         let updatableStatus = [1,2,4]
         if updatableStatus.contains(orderDetails.status){
             orderDetails.status += 1
+            if orderDetails.status == 5{
+                publishOrderToHistory()
+            }
             db.collection("ordersList").document(orderDetails.databaseID!).updateData(["status":orderDetails.status])
             buttonStatus.setTitle(StaticInfoManager.statusMeaning[orderDetails.status], for: .normal)
         }
     }
-
+    func publishOrderToHistory(){
+        let currentTimestamp = DateFormatter()
+        currentTimestamp.dateFormat = StaticInfoManager.dateTimeFormat
+        let items = self.itemList.data
+        let reciept = Reciept(date: currentTimestamp.string(from: Date()), products: items)
+        db.collection("orderHistory").addDocument(data: [
+            "date":reciept.date,
+            "items":reciept.products.map({
+                ["name":$0.foodName,"quantity":$0.quantity,"unitPrice":$0.originalPrice]
+            })
+        ])
+    }
     /*
     // MARK: - Navigation
 

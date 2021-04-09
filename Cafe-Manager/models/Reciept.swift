@@ -9,7 +9,7 @@
 import Foundation
 struct Reciept:Codable {
     var date:String
-    var products:[PendingOrder]
+    var products:[OrderItemInfo]
     var totalCost:Int = 0
     
     func asDictionary()->[String:Any]{

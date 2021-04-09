@@ -17,7 +17,6 @@
 		941B3F8B261B07F5003586DF /* OrderMoreDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B3F8A261B07F5003586DF /* OrderMoreDetails.swift */; };
 		941B3F8D261B12B5003586DF /* FoodItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B3F8C261B12B5003586DF /* FoodItemCell.swift */; };
 		941B3F8F261B12EB003586DF /* OrderItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B3F8E261B12EB003586DF /* OrderItemList.swift */; };
-		941B3F91261B1342003586DF /* OrderItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B3F90261B1342003586DF /* OrderItems.swift */; };
 		941B3F93261B189B003586DF /* StaticInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B3F92261B189B003586DF /* StaticInfoManager.swift */; };
 		942B44F02618A5B900C169AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B44EF2618A5B900C169AE /* AppDelegate.swift */; };
 		942B44F22618A5B900C169AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B44F12618A5B900C169AE /* SceneDelegate.swift */; };
@@ -40,7 +39,7 @@
 		9466F17B261B1CF900A697C3 /* Reciept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F17A261B1CF900A697C3 /* Reciept.swift */; };
 		9466F17D261B1D7C00A697C3 /* RecieptList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F17C261B1D7C00A697C3 /* RecieptList.swift */; };
 		9466F17F261B1DEC00A697C3 /* DailyRecieptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F17E261B1DEC00A697C3 /* DailyRecieptCell.swift */; };
-		9466F181261B1E7E00A697C3 /* PendingOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F180261B1E7E00A697C3 /* PendingOrder.swift */; };
+		9466F181261B1E7E00A697C3 /* OrderItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F180261B1E7E00A697C3 /* OrderItemInfo.swift */; };
 		946B5421261C235400C946B2 /* LocationPermissionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B5420261C235400C946B2 /* LocationPermissionScreen.swift */; };
 		946B5424261C23A800C946B2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B5423261C23A800C946B2 /* LocationService.swift */; };
 		946B5426261C26C200C946B2 /* StartupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B5425261C26C200C946B2 /* StartupNavigationController.swift */; };
@@ -87,7 +86,6 @@
 		941B3F8A261B07F5003586DF /* OrderMoreDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMoreDetails.swift; sourceTree = "<group>"; };
 		941B3F8C261B12B5003586DF /* FoodItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemCell.swift; sourceTree = "<group>"; };
 		941B3F8E261B12EB003586DF /* OrderItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemList.swift; sourceTree = "<group>"; };
-		941B3F90261B1342003586DF /* OrderItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItems.swift; sourceTree = "<group>"; };
 		941B3F92261B189B003586DF /* StaticInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticInfoManager.swift; sourceTree = "<group>"; };
 		942B44EC2618A5B900C169AE /* Cafe-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cafe-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		942B44EF2618A5B900C169AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,7 +114,7 @@
 		9466F17A261B1CF900A697C3 /* Reciept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reciept.swift; sourceTree = "<group>"; };
 		9466F17C261B1D7C00A697C3 /* RecieptList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieptList.swift; sourceTree = "<group>"; };
 		9466F17E261B1DEC00A697C3 /* DailyRecieptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecieptCell.swift; sourceTree = "<group>"; };
-		9466F180261B1E7E00A697C3 /* PendingOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOrder.swift; sourceTree = "<group>"; };
+		9466F180261B1E7E00A697C3 /* OrderItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemInfo.swift; sourceTree = "<group>"; };
 		946B5420261C235400C946B2 /* LocationPermissionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionScreen.swift; sourceTree = "<group>"; };
 		946B5423261C23A800C946B2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		946B5425261C26C200C946B2 /* StartupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupNavigationController.swift; sourceTree = "<group>"; };
@@ -175,9 +173,8 @@
 			children = (
 				940CF68226198C870007E37B /* FoodDetail.swift */,
 				949668462619D0F2001EA192 /* OrderStatus.swift */,
-				941B3F90261B1342003586DF /* OrderItems.swift */,
 				9466F17A261B1CF900A697C3 /* Reciept.swift */,
-				9466F180261B1E7E00A697C3 /* PendingOrder.swift */,
+				9466F180261B1E7E00A697C3 /* OrderItemInfo.swift */,
 				94B6EA20261FFC3E0026844A /* UserLocation.swift */,
 			);
 			path = models;
@@ -521,7 +518,7 @@
 				949668452619D026001EA192 /* OrderStatusCell.swift in Sources */,
 				9400F3D7261D952A00A708F4 /* NewCategoryScreen.swift in Sources */,
 				9466F17F261B1DEC00A697C3 /* DailyRecieptCell.swift in Sources */,
-				9466F181261B1E7E00A697C3 /* PendingOrder.swift in Sources */,
+				9466F181261B1E7E00A697C3 /* OrderItemInfo.swift in Sources */,
 				942B45482618BD1900C169AE /* cardView.swift in Sources */,
 				940CF68626198DEF0007E37B /* FoodSmallDetailCell.swift in Sources */,
 				949668492619D166001EA192 /* OrderScreen.swift in Sources */,
@@ -533,7 +530,6 @@
 				946B5426261C26C200C946B2 /* StartupNavigationController.swift in Sources */,
 				942B45442618BD1900C169AE /* RoundBtn.swift in Sources */,
 				9466F179261B1C9B00A697C3 /* AccountScreen.swift in Sources */,
-				941B3F91261B1342003586DF /* OrderItems.swift in Sources */,
 				942B44F02618A5B900C169AE /* AppDelegate.swift in Sources */,
 				942B44F22618A5B900C169AE /* SceneDelegate.swift in Sources */,
 				940CF67D2619895A0007E37B /* CustomUIViewContainer.swift in Sources */,
