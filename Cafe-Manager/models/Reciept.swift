@@ -11,7 +11,7 @@ struct Reciept:Codable {
     var date:String
     var products:[OrderItemInfo]
     var totalCost:Int = 0
-    
+    var isRejected:Bool = false
     func asDictionary()->[String:Any]{
         let data = try? JSONEncoder().encode(self)
         return try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String : Any]

@@ -41,25 +41,16 @@ class OrderMoreDetails: UIViewController {
         let updatableStatus = [1,2,4]
         if updatableStatus.contains(orderDetails.status){
             orderDetails.status += 1
+            var uploadingData :[String:Any] = ["status":orderDetails.status]
             if orderDetails.status == 5{
-                publishOrderToHistory()
+                uploadingData["date"] = StaticInfoManager.getDateString()
             }
-            db.collection("ordersList").document(orderDetails.databaseID!).updateData(["status":orderDetails.status])
+            db.collection("ordersList").document(orderDetails.databaseID!).updateData(uploadingData)
             buttonStatus.setTitle(StaticInfoManager.statusMeaning[orderDetails.status], for: .normal)
         }
     }
-    func publishOrderToHistory(){
-        let currentTimestamp = DateFormatter()
-        currentTimestamp.dateFormat = StaticInfoManager.dateTimeFormat
-        let items = self.itemList.data
-        let reciept = Reciept(date: currentTimestamp.string(from: Date()), products: items)
-        db.collection("orderHistory").addDocument(data: [
-            "date":reciept.date,
-            "items":reciept.products.map({
-                ["name":$0.foodName,"quantity":$0.quantity,"unitPrice":$0.originalPrice]
-            })
-        ])
-    }
+    
+    
     /*
     // MARK: - Navigation
 

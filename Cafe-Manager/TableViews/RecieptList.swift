@@ -26,7 +26,11 @@ class RecieptList: UITableView, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecieptCell") as! DailyRecieptCell
         let reciept = data[indexPath.row]
         
-        
+        if reciept.isRejected{
+            cell.contentView.backgroundColor = UIColor.init(red: 1, green: 0, blue: 0, alpha: 0.5)
+        }else{
+            cell.contentView.backgroundColor = .none
+        }
         cell.date.text = formaetDate(source: reciept.date)
         cell.priceFrequencyList.text = ""
         cell.itemList.text = ""

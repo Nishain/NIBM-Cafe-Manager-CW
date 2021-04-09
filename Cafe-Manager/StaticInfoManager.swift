@@ -19,4 +19,9 @@ class StaticInfoManager {
     static let dateTimeFormat = "yy/MM/dd HH:mm"
     static let dateOnly = "yy/MM/dd"
     static let unknownCategory = "unknown category"
+    static func getDateString()->String{
+        let currentTimestamp = DateFormatter()
+        currentTimestamp.dateFormat = StaticInfoManager.dateTimeFormat
+        return currentTimestamp.string(from: Date())
+    }
 }

@@ -21,8 +21,10 @@ class OrderScreen: UITableViewController {
       loadOrders()
     }
     func loadOrders(){
-        db.collection("ordersList").addSnapshotListener({query,error in
-            print(error)
+        db.collection("ordersList").whereField("status",isLessThanOrEqualTo:4).addSnapshotListener({query,error in
+            if error != nil{
+                print(error)
+            }
             let orderList:[OrderStatus] = (query?.documents ?? []).map({
                 let data = $0.data()
                 let orderStatus = OrderStatus(databaseID: $0.documentID,
@@ -41,7 +43,9 @@ class OrderScreen: UITableViewController {
             
         })
     }
-   
+    func notifyCloseRangeArrival(){
+        
+    }
     func checkForArrivingStatus(){
         
         db.collection("userLocation").addSnapshotListener({documents,error in
@@ -151,9 +155,12 @@ class OrderScreen: UITableViewController {
                 }
                 return false
             })!
+            cell.secondaryButton.tag = cell.statusContainer.tag
+            cell.secondaryButton.isHidden = false
+            cell.secondaryButton.addTarget(self, action: #selector(onOrderAccepted(sender:)), for: .touchUpInside)
             cell.statusContainer.backgroundColor = .red
             cell.statusContainer.addTarget(self, action: #selector(onOrderRejected(sender:)), for: .touchUpInside)
-            cell.secondaryButton.isHidden = false
+            
         }else{
             cell.statusContainer.removeTarget(self, action: #selector(onOrderRejected(sender:)), for: .touchUpInside)
             cell.statusContainer.backgroundColor = #colorLiteral(red: 1, green: 0.4706886616, blue: 0.1020977057, alpha: 1)
@@ -163,11 +170,11 @@ class OrderScreen: UITableViewController {
 
         return cell
     }
-    
+    @objc func onOrderAccepted(sender:UIButton){
+        db.collection("ordersList").document(orders[sender.tag].databaseID!).updateData(["status":2])
+    }
     @objc func onOrderRejected(sender:UIButton){
-        orders.remove(at: sender.tag)
-        getSectionHeadings()
-        tableView.reloadData()
+        db.collection("ordersList").document(orders[sender.tag].databaseID!).updateData(["status":6,"date":StaticInfoManager.getDateString()])
     }
     func onOrderSelected(source:OrderStatus){
          let backButton = UIBarButtonItem()

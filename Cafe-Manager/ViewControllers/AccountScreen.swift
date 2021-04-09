@@ -24,7 +24,7 @@ class AccountScreen: UIViewController, UIImagePickerControllerDelegate, UINaviga
     var isOnlySingleItemAdded = false
     let BEGINING_OF_TIME = "from begining"
     func loadData(){
-        db.collection("orderHistory").addSnapshotListener({data,err in
+        db.collection("ordersList").whereField("status", isGreaterThanOrEqualTo: 5).addSnapshotListener({data,err in
             
             if(err != nil){
                 print(err)
@@ -34,9 +34,12 @@ class AccountScreen: UIViewController, UIImagePickerControllerDelegate, UINaviga
                 let dataDictionary = $0.data()
                 var reciept = Reciept(date: dataDictionary["date"] as! String, products: [])
                 reciept.products = (dataDictionary["items"] as! [[String:Any]]).map({
-                    return OrderItemInfo(foodName: $0["name"] as! String, quantity: $0["quantity"] as! Int, originalPrice: $0["unitPrice"] as! Int)
+                    return OrderItemInfo(foodName: $0["foodName"] as! String, quantity: $0["quantity"] as! Int, originalPrice: $0["unitPrice"] as! Int)
                 })
                 reciept.totalCost = reciept.products.map({$0.quantity * $0.originalPrice}).reduce(0, +)
+                if (dataDictionary["status"] as! Int) == 6{
+                    reciept.isRejected = true
+                }
                 return reciept
             })
             self.isOnlySingleItemAdded = ((self.data.count - self.data.count) == 1)
