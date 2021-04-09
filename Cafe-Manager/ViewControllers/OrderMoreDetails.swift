@@ -47,6 +47,9 @@ class OrderMoreDetails: UIViewController {
             }
             db.collection("ordersList").document(orderDetails.databaseID!).updateData(uploadingData)
             buttonStatus.setTitle(StaticInfoManager.statusMeaning[orderDetails.status], for: .normal)
+            if orderDetails.status == 5{
+                navigationController?.popViewController(animated: true)
+            }
         }
     }
     

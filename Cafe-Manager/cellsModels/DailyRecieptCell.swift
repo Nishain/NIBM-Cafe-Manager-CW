@@ -14,11 +14,15 @@ class DailyRecieptCell: UITableViewCell {
     @IBOutlet weak var itemList: UILabel!
     @IBOutlet weak var priceFrequencyList: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
+    var onPrintRequested:(()->Void)!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    @IBAction func printBtnTapped(_ sender: Any) {
+        onPrintRequested()
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

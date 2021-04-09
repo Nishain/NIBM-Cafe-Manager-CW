@@ -18,6 +18,7 @@ class CustomUIViewContainer: UIViewController {
             tabItem.tag = index
             (tabItem as! UIButton).addTarget(self, action: #selector(onTabSelected(sender:)), for: .touchUpInside)
         }
+        topTabBar.subviews[0].backgroundColor = .orange
         storePage = storyboard!.instantiateViewController(identifier: "storePage")
         addChild(storePage)
         storePage.tabBar.isHidden = true
@@ -29,8 +30,9 @@ class CustomUIViewContainer: UIViewController {
     }
 
     @objc func onTabSelected(sender:UIButton){
+        topTabBar.subviews[storePage.selectedIndex].backgroundColor = .none
         storePage.selectedIndex = sender.tag
-        
+        topTabBar.subviews[storePage.selectedIndex].backgroundColor = .orange
     }
     /*
     // MARK: - Navigation

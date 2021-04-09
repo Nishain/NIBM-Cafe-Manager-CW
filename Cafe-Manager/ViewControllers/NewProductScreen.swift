@@ -37,6 +37,7 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
         category.addTarget(self, action: #selector(disableTyping(sender:)), for: .editingChanged)
         category.addTarget(self, action: #selector(enableTyping(sender:)), for: .editingDidEnd)
         category.addTarget(self, action: #selector(onCatergoryEditingBegin(sender:)), for: .editingDidBegin)
+        
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 44))
         toolbar.setItems([
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
@@ -47,7 +48,7 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
         category.inputAccessoryView = toolbar
         // Do any additional setup after loading the view.
     }
-    
+   
     @objc func onFinishEditingDiscount(sender:UITextField){
         if let text = sender.text{
             let alert = AlertPopup(self)

@@ -24,6 +24,7 @@ class AccountScreen: UIViewController, UIImagePickerControllerDelegate, UINaviga
     var isOnlySingleItemAdded = false
     let BEGINING_OF_TIME = "from begining"
     func loadData(){
+        
         db.collection("ordersList").whereField("status", isGreaterThanOrEqualTo: 5).addSnapshotListener({data,err in
             
             if(err != nil){
