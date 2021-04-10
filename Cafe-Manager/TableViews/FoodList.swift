@@ -3,6 +3,7 @@ import SkeletonView
 import FirebaseFirestore
 class FoodList: UITableView,UITableViewDelegate,UITableViewDataSource {
     var categories: [(id: String, name: String)] = []
+    var onItemSelected:((FoodDetail)->Void)!
     let db = Firestore.firestore()
     required init?(coder: NSCoder) {
         super.init(coder:coder)
@@ -30,6 +31,10 @@ class FoodList: UITableView,UITableViewDelegate,UITableViewDataSource {
             return // very rare index out bound exception can occur sometimes
         }
         data[index].image = newImage
+        
+        reloadRows(at: [getIndexPathforIndex(index: index)], with: .none)
+    }
+    func getIndexPathforIndex(index:Int)->IndexPath{
         var indexPath = IndexPath(row: 0, section: 0)
         let matchingType = data[index].type
         for i in 0..<index{
@@ -37,9 +42,8 @@ class FoodList: UITableView,UITableViewDelegate,UITableViewDataSource {
                 indexPath.row += 1
             }
         }
-        
         indexPath.section = categories.firstIndex(where: { $0.name == data[index].type}) ?? categories.count
-        reloadRows(at: [indexPath], with: .none)
+        return indexPath
     }
     func transverse(view:UIView,mode:Bool,exceptionView:UIView? = nil){
         if(view is UIButton || view is UILabel || view is UIImageView){
@@ -106,6 +110,21 @@ class FoodList: UITableView,UITableViewDelegate,UITableViewDataSource {
     func isContainsUnknownCategories()->Bool{
         data.contains(where: {$0.type == StaticInfoManager.unknownCategory})
     }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = .white
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var index = 0
+        for (detail) in data{
+            if detail.type == getCategoryNameByIndex(index: indexPath.section) {
+                if index == indexPath.row{
+                    return onItemSelected(detail)
+                }
+                index += 1
+            }
+        }
+    }
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

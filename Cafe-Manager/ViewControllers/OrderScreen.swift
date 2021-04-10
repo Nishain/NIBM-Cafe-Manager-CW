@@ -43,9 +43,7 @@ class OrderScreen: UITableViewController {
             
         })
     }
-    func notifyCloseRangeArrival(){
-        
-    }
+   
     func checkForArrivingStatus(){
         
         db.collection("userLocation").addSnapshotListener({documents,error in
@@ -114,24 +112,31 @@ class OrderScreen: UITableViewController {
     }
    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if orders.count == 0{
+            return nil
+        }
         let entry = sectionHeadings[section]
         return "\(StaticInfoManager.statusMeaning[entry.status]!) (\(entry.frequesncy))"
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return sectionHeadings.count
+        return orders.count == 0 ? 1 : sectionHeadings.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionHeadings[section].frequesncy
+        return orders.count == 0 ? 1 : sectionHeadings[section].frequesncy
         //return sectionHeadings.map({key,value in value})[section]
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "orderStatusCell", for: indexPath) as! OrderStatusCell
+        if orders.count == 0 {
+            return tableView.dequeueReusableCell(withIdentifier: "noOrdersPoster",for: indexPath)
+        }
         let filteredData = orders.filter({$0.status == sectionHeadings [indexPath.section].status})
         let orderInfo = filteredData[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "orderStatusCell", for: indexPath) as! OrderStatusCell
+        
         cell.orderID.text = String(orderInfo.orderID)
         cell.customerName.text = orderInfo.customerName
         cell.statusContainer.setTitle(StaticInfoManager.statusMeaning [orderInfo.status], for: .normal)

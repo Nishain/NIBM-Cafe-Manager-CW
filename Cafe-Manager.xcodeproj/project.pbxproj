@@ -49,10 +49,10 @@
 		949668472619D0F2001EA192 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949668462619D0F2001EA192 /* OrderStatus.swift */; };
 		949668492619D166001EA192 /* OrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949668482619D166001EA192 /* OrderScreen.swift */; };
 		9496684B2619D1EA001EA192 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9496684A2619D1EA001EA192 /* CircleButton.swift */; };
+		94AE91E12621707300A4E0B7 /* FullFoodDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE91E02621707300A4E0B7 /* FullFoodDetailScreen.swift */; };
 		94B6EA21261FFC3E0026844A /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B6EA20261FFC3E0026844A /* UserLocation.swift */; };
 		94B6EA24262016C80026844A /* notification.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 94B6EA23262016C80026844A /* notification.mp3 */; };
 		94BC80D4261B45D900D019B6 /* NewProductScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BC80D3261B45D900D019B6 /* NewProductScreen.swift */; };
-		94BC80D6261BDE8F00D019B6 /* UnEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BC80D5261BDE8F00D019B6 /* UnEditableTextField.swift */; };
 		DCA8BEDD079BB4F7A0009E93 /* Pods_Cafe_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BBD4F82ACDE36686377402B /* Pods_Cafe_Manager.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,10 +124,10 @@
 		949668462619D0F2001EA192 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		949668482619D166001EA192 /* OrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderScreen.swift; sourceTree = "<group>"; };
 		9496684A2619D1EA001EA192 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		94AE91E02621707300A4E0B7 /* FullFoodDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullFoodDetailScreen.swift; sourceTree = "<group>"; };
 		94B6EA20261FFC3E0026844A /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		94B6EA23262016C80026844A /* notification.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = notification.mp3; sourceTree = "<group>"; };
 		94BC80D3261B45D900D019B6 /* NewProductScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductScreen.swift; sourceTree = "<group>"; };
-		94BC80D5261BDE8F00D019B6 /* UnEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnEditableTextField.swift; sourceTree = "<group>"; };
 		DC2C401893D9E46D5F7F79F2 /* Pods-Cafe-Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cafe-Manager.release.xcconfig"; path = "Target Support Files/Pods-Cafe-Manager/Pods-Cafe-Manager.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -269,6 +269,7 @@
 				946B5427261C2AD400C946B2 /* MainScreenContainer.swift */,
 				9400F3D6261D952A00A708F4 /* NewCategoryScreen.swift */,
 				9400F3DA261DB98700A708F4 /* StoreRootController.swift */,
+				94AE91E02621707300A4E0B7 /* FullFoodDetailScreen.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -284,7 +285,6 @@
 				942B45412618BD1900C169AE /* UIPaddingLabel.swift */,
 				9496684A2619D1EA001EA192 /* CircleButton.swift */,
 				940CF67A2619693E0007E37B /* AlertPopup.swift */,
-				94BC80D5261BDE8F00D019B6 /* UnEditableTextField.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -506,12 +506,12 @@
 				940CF68326198C870007E37B /* FoodDetail.swift in Sources */,
 				94B6EA21261FFC3E0026844A /* UserLocation.swift in Sources */,
 				9466F17B261B1CF900A697C3 /* Reciept.swift in Sources */,
+				94AE91E12621707300A4E0B7 /* FullFoodDetailScreen.swift in Sources */,
 				949668472619D0F2001EA192 /* OrderStatus.swift in Sources */,
 				946B5424261C23A800C946B2 /* LocationService.swift in Sources */,
 				942B45462618BD1900C169AE /* Toast.swift in Sources */,
 				942B45492618BD1900C169AE /* AvatarImage.swift in Sources */,
 				942B44F42618A5B900C169AE /* ViewController.swift in Sources */,
-				94BC80D6261BDE8F00D019B6 /* UnEditableTextField.swift in Sources */,
 				949668432619C564001EA192 /* CategoryList.swift in Sources */,
 				942B452F2618BA2D00C169AE /* AuthScreen.swift in Sources */,
 				9466F17D261B1D7C00A697C3 /* RecieptList.swift in Sources */,

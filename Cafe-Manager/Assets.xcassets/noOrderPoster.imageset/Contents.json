@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "man-drink-coffee-abstract-flat-character_7376-25.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "man-drink-coffee-abstract-flat-character_7376-26.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "man-drink-coffee-abstract-flat-character_7376-27.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

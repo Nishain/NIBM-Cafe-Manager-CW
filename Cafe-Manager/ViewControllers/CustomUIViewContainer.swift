@@ -25,7 +25,8 @@ class CustomUIViewContainer: UIViewController {
         
         storePage.view.frame = view.subviews[1].bounds
         view.subviews[1].addSubview(storePage.view)
-        
+        let foodScreen = storePage.viewControllers![0] as! FoodScreen
+        foodScreen.rootNavigator = tabBarController!.navigationController
         // Do any additional setup after loading the view.
     }
 

@@ -13,7 +13,7 @@ class FoodScreen: UIViewController {
 
     let db = Firestore.firestore()
     let imageStore = Storage.storage()
-   
+    var rootNavigator:UINavigationController!
     var isDataLoaded = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,12 @@ class FoodScreen: UIViewController {
             foodList.categories = rootController.catergories
             foodList.data = rootController.foodData
         }
-  
+        foodList.onItemSelected = {data in
+            let foodDetailScreen = self.storyboard!.instantiateViewController(identifier: "foodDetailScreen") as! FullFoodDetailScreen
+            foodDetailScreen.foodDetail = data
+            self.rootNavigator.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+            self.rootNavigator.pushViewController(foodDetailScreen, animated: true)
+        }
     }
   
     
