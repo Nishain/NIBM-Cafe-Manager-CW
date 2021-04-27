@@ -281,7 +281,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95L-PH-PIr" customClass="RoundBtn" customModule="Cafe_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="22.5" y="0.0" width="70" height="70"/>
-                                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="4G6-zk-Zh8"/>
                                                     <constraint firstAttribute="height" constant="70" id="Lew-NT-aMG"/>
@@ -392,6 +392,13 @@ next stage</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4mO-qq-SGH"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rLV-TT-6W9">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="phone.fill" catalog="system" id="3kA-hB-fV4">
+                            <connections>
+                                <action selector="onMakePhoneCall:" destination="iYk-PW-0hX" id="ZG9-HV-4y7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonStatus" destination="95L-PH-PIr" id="NuP-U6-irk"/>
                         <outlet property="itemList" destination="JLN-3Q-pVr" id="MVP-Ms-qpx"/>
@@ -577,10 +584,10 @@ next stage</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oDD-Th-A42" userLabel="textFieldStack">
-                                <rect key="frame" x="50" y="379" width="314" height="138.5"/>
+                                <rect key="frame" x="50" y="361" width="314" height="174.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nishain.atomic@gmail.com" borderStyle="bezel" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jzI-mx-rHi" userLabel="email" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                         <userDefinedRuntimeAttributes>
@@ -590,7 +597,7 @@ next stage</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Phonenumber" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Yd-3v-tG8" userLabel="phonenumber" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="36" width="314" height="28.5"/>
+                                        <rect key="frame" x="0.0" y="45" width="314" height="37.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         <userDefinedRuntimeAttributes>
@@ -600,7 +607,7 @@ next stage</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="bezel" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HhH-c3-0Ym" userLabel="password" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="74.5" width="314" height="27"/>
+                                        <rect key="frame" x="0.0" y="92.5" width="314" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -610,7 +617,7 @@ next stage</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4S-Wf-P0a" userLabel="confirmPassword" customClass="PaddingTextUI" customModule="Cafe_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="111.5" width="314" height="27"/>
+                                        <rect key="frame" x="0.0" y="138.5" width="314" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -622,7 +629,7 @@ next stage</string>
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4N7-LO-ut3">
-                                <rect key="frame" x="87" y="212.5" width="240" height="128"/>
+                                <rect key="frame" x="87" y="194.5" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="HR8-si-drg"/>
                                     <constraint firstAttribute="height" constant="128" id="RTP-hm-uU0"/>
@@ -635,7 +642,7 @@ next stage</string>
                                 </variation>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="g99-j1-xub" userLabel="buttonStack">
-                                <rect key="frame" x="50" y="537.5" width="314" height="58"/>
+                                <rect key="frame" x="50" y="555.5" width="314" height="58"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDj-Nq-dYl" customClass="RoundBtn" customModule="Cafe_Manager" customModuleProvider="target">
                                         <rect key="frame" x="121" y="0.0" width="72" height="18"/>
@@ -1356,7 +1363,7 @@ Item 2</string>
         <!--Full Food Detail Screen-->
         <scene sceneID="vKz-oA-6OF">
             <objects>
-                <viewController storyboardIdentifier="foodDetailScreen" id="biD-ug-PN6" customClass="FullFoodDetailScreen" customModule="FoodCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="foodDetailScreen" id="biD-ug-PN6" customClass="FullFoodDetailScreen" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MrG-Hu-p3L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1388,7 +1395,7 @@ Item 2</string>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEj-on-60g" customClass="UIPaddingLabel" customModule="FoodCafe" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEj-on-60g" customClass="UIPaddingLabel" customModule="Cafe_Manager" customModuleProvider="target">
                                                                         <rect key="frame" x="310" y="0.0" width="84" height="20.5"/>
                                                                         <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1447,13 +1454,7 @@ Item 2</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tX8-WQ-Zob"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Rr2-xE-GjT">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="phone.fill" catalog="system" id="i0b-68-c1k">
-                            <connections>
-                                <action selector="onMakePhoneCall:" destination="biD-ug-PN6" id="VSu-pH-eUu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Rr2-xE-GjT"/>
                     <connections>
                         <outlet property="foodDescription" destination="mQ4-6v-rij" id="ssn-yG-Ka8"/>
                         <outlet property="foodImage" destination="70e-dK-Nbg" id="Llf-f6-exl"/>
@@ -1467,6 +1468,7 @@ Item 2</string>
             <point key="canvasLocation" x="6094" y="139"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="accountTab" width="32" height="32"/>
         <image name="bigMap" width="492" height="204.5"/>

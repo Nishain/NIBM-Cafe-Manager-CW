@@ -16,8 +16,6 @@ class OrderScreen: UITableViewController {
     let locationService:LocationService = LocationService()
     var player:AVAudioPlayer?
     override func viewDidLoad(){
-    //sortOrders()
-        
       loadOrders()
     }
     func loadOrders(){
@@ -31,10 +29,13 @@ class OrderScreen: UITableViewController {
                                               orderID:data["id"] as! Int,
                                               customerName: data["customerName"] as? String,
                                               status: data["status"] as! Int,
-                                              customerID: data["uid"] as! String)
+                                              customerID: data["uid"] as! String,
+                                              phoneNumber: data["phoneNumber"] as? String
+                                              )
                 return orderStatus
             })
             if self.orders.count == 0{
+                //add the snaphot listener when orders are populated for the first time...
                 self.checkForArrivingStatus()
             }
             self.orders = orderList
@@ -52,10 +53,11 @@ class OrderScreen: UITableViewController {
             })
             self.locationService.requestLocation()
             self.locationService.onLocationRecived = { shopLocation in
+                var shouldPlaySound = false
                 for location in locations{
                     var orderToBeUpadated = self.orders.first(where: {$0.customerID == location.uid && $0.status == 3})
                     if orderToBeUpadated == nil{
-                        continue
+                        continue // go to next order
                     }
                     
                     let distance = shopLocation?.distance(from: CLLocation(latitude: location.location.latitude, longitude: location.location.latitude)) ?? 100
@@ -64,10 +66,13 @@ class OrderScreen: UITableViewController {
                             orderToBeUpadated!.status += 1
                         self.db.collection("ordersList").document(orderToBeUpadated!.databaseID!).updateData(["status":orderToBeUpadated!.status],completion: { error in
                             if error == nil{
-                                self.playSound()
+                                shouldPlaySound = true
                             }
                         })
                     }
+                }
+                if shouldPlaySound{
+                    self.playSound()
                 }
             }
             

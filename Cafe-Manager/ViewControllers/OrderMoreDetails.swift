@@ -37,6 +37,14 @@ class OrderMoreDetails: UIViewController {
             self.itemList.reloadData()
         })
     }
+    @IBAction func onMakePhoneCall(_ sender: Any) {
+        if orderDetails.phoneNumber == nil{
+        AlertPopup(self).infoPop(title: "Missing phoneNumber", body: "This customer has not provided any phone number yet")
+        }else{
+            guard let number = URL(string: "tel://" + orderDetails.phoneNumber!) else { return }
+            UIApplication.shared.open(number)
+        }
+    }
     @objc func onStatusTapped(sender:UIButton){
         let updatableStatus = [1,2,4]
         if updatableStatus.contains(orderDetails.status){

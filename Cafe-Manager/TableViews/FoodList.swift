@@ -105,7 +105,9 @@ class FoodList: UITableView,UITableViewDelegate,UITableViewDataSource {
         return data.count == 0 ? 1: categories.count + (isContainsUnknownCategories() ? 1 : 0)
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        getCategoryNameByIndex(index: section)
+        return data.first(where : {
+            $0.type == getCategoryNameByIndex(index: section)
+        }) == nil ? nil : getCategoryNameByIndex(index: section)
     }
     func isContainsUnknownCategories()->Bool{
         data.contains(where: {$0.type == StaticInfoManager.unknownCategory})
