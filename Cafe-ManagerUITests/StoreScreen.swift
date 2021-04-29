@@ -11,6 +11,15 @@ import Firebase
 class StoreScreen: XCTestCase {
 
     override func setUpWithError() throws {
+//        let paths = Bundle(for: type(of: self)).paths(forResourcesOfType: "plist", inDirectory: nil)
+//        //GoogleService-Info
+//        for p in paths{
+//            print("path "+p)
+//        }
+        let filePath = Bundle(for: type(of: self)).path(forResource: "GoogleService-Info", ofType: "plist")
+        guard let fileopts = FirebaseOptions(contentsOfFile: filePath!)
+        else { assert(false, "Couldn't load config file") }
+        FirebaseApp.configure(options:fileopts)
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
@@ -77,67 +86,80 @@ class StoreScreen: XCTestCase {
         
         //app.tables.cells.staticTexts
     }
+    func typeText(field:String,value:String,app:XCUIApplication){
+        app.textFields[field].tap()
+        app.textFields[field].typeText(value)
+    }
     func testFoodAdd() throws{
         
         let app = XCUIApplication()
         app/*@START_MENU_TOKEN@*/.staticTexts["Menu + "]/*[[".buttons[\"Menu + \"].staticTexts[\"Menu + \"]",".staticTexts[\"Menu + \"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
         let elementsQuery = app.scrollViews.otherElements
-        elementsQuery.textFields["Food name"].tap()
-        elementsQuery.textFields["Food name"].typeText("sample food name")
-
-        app.textFields["Price"].tap()
-        app.textFields["Price"].typeText("not a number")
+        typeText(field: "Food name", value: "sample food name", app: app)
+        typeText(field: "Price", value: "not a number", app: app)
         app.tap()
         XCTAssertTrue(app.alerts["Invalid cost"].exists)
         app.alerts["Invalid cost"].buttons.firstMatch.tap()
-        app.textFields["Price"].tap()
-        app.textFields["Price"].typeText("120")
+        typeText(field: "Price", value: "120", app: app)
         app.tap()
         let selectCategoryTextField = elementsQuery.textFields["Select Category"]
         selectCategoryTextField.tap()
         app.pickerWheels.element(boundBy: 0).tap()
         app.toolbars["Toolbar"].buttons["Done"].tap()
         
-        let discountTextField = elementsQuery.textFields["Discount"]
-        discountTextField.tap()
-        discountTextField.typeText("not a number")
+        typeText(field: "Discount", value: "not a number", app: app)
         app.tap()
         XCTAssertTrue(app.alerts["Invalid Discount"].exists)
         app.alerts["Invalid Discount"].buttons.firstMatch.tap()
-        discountTextField.tap()
-        discountTextField.typeText("20")
+        typeText(field: "Discount", value: "20", app: app)
         app.tap()
         let addBtn = app.buttons["Add +"]
         addBtn.tap()
         XCTAssertTrue(app.alerts["Fields Empty"].exists)
         app.alerts["Fields Empty"].buttons.firstMatch.tap()
-        app.textFields["Food description"].tap()
-        app.textFields["Food description"].typeText("sample food description")
+        typeText(field: "Food description", value: "sample food description", app: app)
         app.tap()
         addBtn.tap()
         XCTAssertTrue(app.alerts["No image"].exists)
         app.alerts.buttons["Ok"].tap()
         elementsQuery.images["emptyFood"].tap()
         app.sheets["Choose Method"].scrollViews.otherElements.buttons["From gallery"].tap()
+        XCTAssertTrue(app.tables.cells.element(boundBy: 1).waitForExistence(timeout: 3))
         app.tables.cells.element(boundBy: 1).tap()
         app.collectionViews.cells.element(boundBy: 0).tap()
         XCTAssertTrue(addBtn.waitForExistence(timeout: 4))
         addBtn.tap()
         XCTAssertTrue(app.tables.cells.staticTexts["sample food name"].waitForExistence(timeout: 6))
     }
-    func testOrders(){
+ 
+    func testOrders() throws{
+        let db = Firestore.firestore()
         let app = XCUIApplication()
-        app.tabBars.tabs["Orders"].tap()
-        XCTAssertTrue(app.tables.cells.staticTexts["Kamal"].waitForExistence(timeout: 3))
-        
-        let testingRow = app.tables.cells.allElementsBoundByIndex.first(where: {$0.staticTexts["Kamal"].exists && $0.buttons["Accept"].exists})
-        XCTAssertNil(testingRow)
-        testingRow!.buttons["Accept"].tap()
-        XCTAssertTrue(testingRow!.buttons["Preparing"].waitForExistence(timeout: 2))
-        testingRow!.buttons["Preparing"].tap()
-        XCTAssertTrue(testingRow!.buttons["Ready"].waitForExistence(timeout: 2))
+        app.tabBars.buttons["Orders"].tap()
+        db.collection("ordersList").document("h43fZY6FVZ3b8B0Yf5jy").updateData(["status":1])
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: app.tables.cells.staticTexts["Kamal"], handler: nil)
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: app.tables.cells.buttons["Accept"], handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
+        let initialCount = app.tables.cells.count
+        let testingRow = app.tables.cells.allElementsBoundByIndex.first(where: {$0.staticTexts["Kamal"].exists && $0.buttons["Accept"].exists})!
+        testingRow.buttons["Accept"].tap()
+        proceedToNextOrderStatus(status:"Preparing",testingRow: testingRow)
+        proceedToNextOrderStatus(status: "Ready", testingRow: testingRow)
+        db.collection("ordersList").document("h43fZY6FVZ3b8B0Yf5jy").updateData(["status":4])
+        proceedToNextOrderStatus(status: "Arriving", testingRow: testingRow,ignoreNavigationBack: true)
+        XCTAssertFalse(testingRow.staticTexts["Kamal"].waitForExistence(timeout: 5))
+        let afterCellCount = app.tables.cells.count
+        XCTAssertTrue((initialCount==1 && afterCellCount==1) || (initialCount == afterCellCount + 1))
     }
-    
+    func proceedToNextOrderStatus(status:String,testingRow:XCUIElement,ignoreNavigationBack:Bool = false){
+        let app = XCUIApplication()
+        XCTAssertTrue(testingRow.buttons[status].waitForExistence(timeout: 2))
+        testingRow.tap()
+        XCTAssertTrue(app.buttons[status].exists)
+        app.buttons[status].tap()
+        if !ignoreNavigationBack{
+            	app.navigationBars.buttons.element(boundBy: 0).tap()
+        }
+    }
 }
 

@@ -17,6 +17,8 @@ class FoodScreen: UIViewController {
     var isDataLoaded = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        let bundleID =  Bundle.main.bundleIdentifier
+        print("bundleID \(bundleID)")
         if isDataLoaded{
             let rootController = tabBarController as! StoreRootController
             foodList.categories = rootController.catergories
