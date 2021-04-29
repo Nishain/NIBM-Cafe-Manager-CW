@@ -69,6 +69,7 @@ class FoodList: UITableView,UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier:"foodDetail") as! FoodSmallDetailCell
         if(data.count > 0){
             transverse(view: cell.contentView, mode: false,exceptionView: cell.foodImage)
+            
             let foodDetail = filteredData[indexPath.row]
             if foodDetail.image != nil{
                 cell.foodImage.hideSkeleton()
@@ -93,7 +94,11 @@ class FoodList: UITableView,UITableViewDelegate,UITableViewDataSource {
             cell.onAvailabilityChanged = {availability in
                 self.db.collection("Foods").document(foodDetail.id!).updateData(["availability":availability])
             }
+            if !cell.isUserInteractionEnabled{
+                cell.isUserInteractionEnabled = true //if enable user interaction once the data is loaded
+            }
         }else{
+            cell.isUserInteractionEnabled = false
             cell.foodDescription.numberOfLines = 2
             transverse(view: cell.contentView, mode: true)
             

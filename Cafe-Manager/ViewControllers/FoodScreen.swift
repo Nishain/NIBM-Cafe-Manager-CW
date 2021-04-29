@@ -25,7 +25,9 @@ class FoodScreen: UIViewController {
         foodList.onItemSelected = {data in
             let foodDetailScreen = self.storyboard!.instantiateViewController(identifier: "foodDetailScreen") as! FullFoodDetailScreen
             foodDetailScreen.foodDetail = data
-            self.rootNavigator.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+            let backButton = UIBarButtonItem()
+                   backButton.title = "Food List"
+            self.tabBarController?.tabBarController?.navigationItem.backBarButtonItem = backButton
             self.rootNavigator.pushViewController(foodDetailScreen, animated: true)
         }
     }

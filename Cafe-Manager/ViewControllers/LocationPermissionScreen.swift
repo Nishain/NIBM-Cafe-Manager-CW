@@ -20,7 +20,7 @@ class PermissionRequestScreen: UIViewController {
         if so the user is prompt to open location and maually provide permission*/
         let status = locationService.status()
         if status == .denied || status == .restricted{
-            openSettings()
+            openSettings(status == .denied)
         }
         
         //setting the callabck when permission is provided realtime by the user
@@ -28,7 +28,7 @@ class PermissionRequestScreen: UIViewController {
             if didAllowed{
                 self.navigateToMainScreen()
             }else{
-                self.openSettings()
+                self.openSettings(self.locationService.status() == .denied)
             }
         }
         
@@ -40,9 +40,17 @@ class PermissionRequestScreen: UIViewController {
     }
     
     
-    func openSettings(){
+    func openSettings(_ isLocationServiceTurnOff:Bool){
         //first the user is promt with a message explaining the permission is denied and then navigate the user to settings...
-        let alertController = UIAlertController(title: "Missing Permissions", message: "It seems you have not provided the location permission you have to open settings manually and provide us the location permission", preferredStyle: .alert)
+        let alertController:UIAlertController!
+        var message:String!
+        if isLocationServiceTurnOff{
+            message = "You have turned off the location service please turn on the location service manually in settings"
+            
+        }else{
+            message = "It seems you have not provided the location permission you have to open settings manually and provide us the location permission"
+        }
+        alertController = UIAlertController(title :"Location service is disabled",message:message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { action in
             UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
         }))
@@ -62,7 +70,7 @@ class PermissionRequestScreen: UIViewController {
         /*
          In case if the permission is already denied eg: when user first denied the permission when asked first time and once again press this button again 'requestWhenInUseAuthorization' will not operate.Thus user is asked to open settings... */
         if status == .denied || status == .restricted{
-            openSettings()
+            openSettings(status == .denied)
         }else{
             locationService.requestWhenInUseAuthorization()
         }

@@ -35,6 +35,8 @@
 		942B45472618BD1900C169AE /* UIPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B45412618BD1900C169AE /* UIPaddingLabel.swift */; };
 		942B45482618BD1900C169AE /* cardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B45422618BD1900C169AE /* cardView.swift */; };
 		942B45492618BD1900C169AE /* AvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B45432618BD1900C169AE /* AvatarImage.swift */; };
+		942C81A12637C38200E03512 /* LoginAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C81A02637C38200E03512 /* LoginAuthentication.swift */; };
+		942C81AB2638833B00E03512 /* StoreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C81AA2638833B00E03512 /* StoreScreen.swift */; };
 		9466F179261B1C9B00A697C3 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F178261B1C9B00A697C3 /* AccountScreen.swift */; };
 		9466F17B261B1CF900A697C3 /* Reciept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F17A261B1CF900A697C3 /* Reciept.swift */; };
 		9466F17D261B1D7C00A697C3 /* RecieptList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F17C261B1D7C00A697C3 /* RecieptList.swift */; };
@@ -110,6 +112,11 @@
 		942B45412618BD1900C169AE /* UIPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPaddingLabel.swift; sourceTree = "<group>"; };
 		942B45422618BD1900C169AE /* cardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cardView.swift; sourceTree = "<group>"; };
 		942B45432618BD1900C169AE /* AvatarImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImage.swift; sourceTree = "<group>"; };
+		942C81A02637C38200E03512 /* LoginAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAuthentication.swift; sourceTree = "<group>"; };
+		942C81A22637D87500E03512 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		942C81A42637DB8200E03512 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		942C81A62637DC4900E03512 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		942C81AA2638833B00E03512 /* StoreScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreScreen.swift; sourceTree = "<group>"; };
 		9466F178261B1C9B00A697C3 /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		9466F17A261B1CF900A697C3 /* Reciept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reciept.swift; sourceTree = "<group>"; };
 		9466F17C261B1D7C00A697C3 /* RecieptList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieptList.swift; sourceTree = "<group>"; };
@@ -250,6 +257,8 @@
 			children = (
 				942B45112618A5CB00C169AE /* Cafe_ManagerUITests.swift */,
 				942B45132618A5CB00C169AE /* Info.plist */,
+				942C81A02637C38200E03512 /* LoginAuthentication.swift */,
+				942C81AA2638833B00E03512 /* StoreScreen.swift */,
 			);
 			path = "Cafe-ManagerUITests";
 			sourceTree = "<group>";
@@ -308,6 +317,9 @@
 		A430D4F6F4F9F8CD1FFAD223 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				942C81A62637DC4900E03512 /* FirebaseCore.framework */,
+				942C81A42637DB8200E03512 /* FirebaseCore.framework */,
+				942C81A22637D87500E03512 /* FirebaseCore.framework */,
 				4BBD4F82ACDE36686377402B /* Pods_Cafe_Manager.framework */,
 			);
 			name = Frameworks;
@@ -553,7 +565,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				942C81AB2638833B00E03512 /* StoreScreen.swift in Sources */,
 				942B45122618A5CB00C169AE /* Cafe_ManagerUITests.swift in Sources */,
+				942C81A12637C38200E03512 /* LoginAuthentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

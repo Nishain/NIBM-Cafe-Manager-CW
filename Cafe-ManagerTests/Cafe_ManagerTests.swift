@@ -7,8 +7,6 @@
 //
 
 import XCTest
-@testable import Cafe_Manager
-
 class Cafe_ManagerTests: XCTestCase {
 
     override func setUpWithError() throws {

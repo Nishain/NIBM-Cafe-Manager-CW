@@ -23,11 +23,15 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
     let db = Firestore.firestore()
     var alert:AlertPopup!
     var categories: [(id: String, name: String)]!
+    var foccusedTextfield:UITextField?
     override func viewDidLoad() {
         super.viewDidLoad()
         alert = AlertPopup(self)
         foodImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onFoodImageTapped(_:))))
+        addBeginEditFieldsCallbacks(fields: [productName,productDescription,productPrice,discount])
+        
         discount.addTarget(self, action: #selector(onFinishEditingDiscount(sender:)), for: .editingDidEnd)
+        productPrice.addTarget(self, action: #selector(onFinishEnteringCost(sender:)), for: .editingDidEnd)
         
         let categoryPicker = UIPickerView()
         categoryPicker.delegate = self
@@ -48,7 +52,24 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
         category.inputAccessoryView = toolbar
         // Do any additional setup after loading the view.
     }
-   
+    func addBeginEditFieldsCallbacks(fields:[UITextField]){
+        for field in fields{
+            field.addTarget(self, action: #selector(onBeginEditingFields(sender:)), for: .editingDidBegin)
+        }
+    }
+    @objc func onBeginEditingFields(sender:UITextField){
+        foccusedTextfield = sender
+    }
+    @objc func onFinishEnteringCost(sender:UITextField){
+        if sender.text == nil || sender.text == ""{
+            return
+        }
+        if Int(sender.text!) ==  nil{
+            sender.text = ""
+            alert.infoPop(title: "Invalid cost", body: "You should specify a number for cost")
+        }
+    }
+    
     @objc func onFinishEditingDiscount(sender:UITextField){
         if let text = sender.text{
             let alert = AlertPopup(self)
@@ -85,7 +106,7 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
         sender.isUserInteractionEnabled = true
     }
     @IBAction func onProductAdding(_ sender: Any) {
-        if checkIfEmpty(fields: [productName,productDescription,productPrice,category]){
+        if checkIfEmpty(fields: [productName,productDescription,productPrice,category,discount]){
             return
         }
         if foodImage.tag == 2{
@@ -146,6 +167,11 @@ class NewProductScreen: UIViewController, UIImagePickerControllerDelegate , UINa
         present(imagePickerController,animated: true)
     }
     @objc func onFoodImageTapped(_: Any){
+        if foccusedTextfield != nil{
+            foccusedTextfield!.endEditing(true)
+            foccusedTextfield = nil
+            return
+        }
         let prompt = UIAlertController(title: "Choose Method", message: "Choose a method to captaure image to food item", preferredStyle: .actionSheet)
         prompt.addAction(UIAlertAction(title: "By Camera", style: .default, handler: {action in
             self.captureImage(isCamera: true)

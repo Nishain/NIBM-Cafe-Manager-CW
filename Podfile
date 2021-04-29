@@ -10,4 +10,10 @@ target 'Cafe-Manager' do
   pod 'Firebase/Firestore'
   pod 'SkeletonView'
   pod 'Firebase/Storage'
+target 'Cafe-ManagerUITests' do
+  inherit! :search_paths
+  # Pods for Cafe-ManagerUITests
+  pod 'Firebase/Auth'	
+  pod 'Firebase/Firestore'	
+end
 end
