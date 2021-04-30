@@ -72,7 +72,7 @@ class StoreRootController: UITabBarController {
             var foodModel = self.populateDataToModel(doc: data!)
             foodModel.image = image
             self.foodData.append(foodModel)
-            self.refreshFoodList()
+            self.loadData()
         })
     }
     func populateDataToModel(doc:DocumentSnapshot)->FoodDetail{

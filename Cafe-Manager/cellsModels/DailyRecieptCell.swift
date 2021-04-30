@@ -14,6 +14,7 @@ class DailyRecieptCell: UITableViewCell {
     @IBOutlet weak var itemList: UILabel!
     @IBOutlet weak var priceFrequencyList: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
+    @IBOutlet weak var canceledLabel: UILabel!
     var onPrintRequested:(()->Void)!
     override func awakeFromNib() {
         super.awakeFromNib()

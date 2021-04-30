@@ -14,4 +14,5 @@ struct OrderStatus {
     var status:Int
     var customerID:String
     var phoneNumber:String?
+    var date:String?
 }

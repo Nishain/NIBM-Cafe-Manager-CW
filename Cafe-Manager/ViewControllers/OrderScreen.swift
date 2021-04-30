@@ -33,7 +33,8 @@ class OrderScreen: UITableViewController {
                                               customerName: data["customerName"] as? String,
                                               status: data["status"] as! Int,
                                               customerID: data["uid"] as! String,
-                                              phoneNumber: data["phoneNumber"] as? String
+                                              phoneNumber: data["phoneNumber"] as? String,
+                                              date:data["date"] as? String
                                               )
                 return orderStatus
             })

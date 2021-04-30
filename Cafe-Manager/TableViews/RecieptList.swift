@@ -27,9 +27,9 @@ class RecieptList: UITableView, UITableViewDelegate, UITableViewDataSource {
         let reciept = data[indexPath.row]
         
         if reciept.isRejected{
-            cell.contentView.backgroundColor = UIColor.init(red: 1, green: 0, blue: 0, alpha: 0.5)
+            cell.canceledLabel.isHidden = false
         }else{
-            cell.contentView.backgroundColor = .none
+            cell.canceledLabel.isHidden = true
         }
         cell.date.text = formaetDate(source: reciept.date)
         cell.priceFrequencyList.text = ""

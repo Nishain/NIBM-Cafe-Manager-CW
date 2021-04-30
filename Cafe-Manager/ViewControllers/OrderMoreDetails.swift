@@ -19,6 +19,12 @@ class OrderMoreDetails: UIViewController {
         super.viewDidLoad()
         
         buttonStatus.setTitle(StaticInfoManager.statusMeaning[orderDetails.status], for: .normal)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = StaticInfoManager.dateTimeFormat
+
+        let difference = Calendar.current.dateComponents([.minute], from: dateFormatter.date(from: orderDetails.date!)!, to: Date())
+        
+        statusDescription.text = "\(difference.minute!) min"
         buttonStatus.addTarget(self, action: #selector(onStatusTapped(sender:)), for: .touchUpInside)
         loadOrderItems()
         // Do any additional setup after loading the view.
