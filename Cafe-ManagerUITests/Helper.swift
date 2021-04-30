@@ -20,8 +20,12 @@ class Helper {
         textField.typeText(value)
     }
     static func handleAlert(title:String,app:XCUIApplication,buttonName:String="Ok",timeOut:Double=0){
-        XCTAssertTrue(timeOut == 0 ? app.alerts[title].exists : app.alerts[title].waitForExistence(timeout: timeOut))
+        XCTAssertTrue(timeOut == 0 ? app.alerts[title].exists : app.alerts[title].waitForExistence(timeout: timeOut),"expected alert '\(title)' didn't appear as expected")
         app.alerts[title].buttons[buttonName].tap()
+    }
+    static func handleAlert(alert:XCUIElementQuery,buttonName:String="Ok",timeOut:Double=0){
+        XCTAssertTrue(timeOut == 0 ? alert.element.exists : alert.element.waitForExistence(timeout: timeOut),"expected alert didn't appear as expected")
+        alert.buttons[buttonName].tap()
     }
     static func clearTextIfNecessary(textField:XCUIElement,app:XCUIApplication){
         let value = textField.value as! String

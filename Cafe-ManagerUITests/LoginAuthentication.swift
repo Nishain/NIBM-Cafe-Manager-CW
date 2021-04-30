@@ -29,7 +29,7 @@ class LoginAuthentication: XCTestCase {
         
     
     }
-    func openSettings(_ permissionMode:Int,skipOpening:Bool = false){
+    func openSettings(_ permissionMode:Int,skipOpening:Bool = false,turnOnLocationOnly:Bool = false){
         let permissionModes = ["Never","Ask Next Time","While Using the app"]
         let settings  = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
         if !skipOpening{
@@ -39,7 +39,9 @@ class LoginAuthentication: XCTestCase {
         }
         settings.tables.staticTexts["Privacy"].tap()
         settings.tables.staticTexts["Location Services"].tap()
-        settings.tables.staticTexts["Cafe-Manager"].tap()
+        if !turnOnLocationOnly{
+            settings.tables.staticTexts["Cafe-Manager"].tap()
+        }
         settings.tables.staticTexts["Ask Next Time"].tap()
         settings.terminate()
     }
@@ -51,10 +53,10 @@ class LoginAuthentication: XCTestCase {
          settings.launch()
          settings.tables.staticTexts["Privacy"].tap()
          settings.tables.staticTexts["Location Services"].tap()
-        if settings.tables.switches["Location Services"].isSelected == turnOn{
+        if settings.tables.switches["Location Services"].value as! String == (turnOn ? "1":"0"){
             return settings.terminate()
         }
-        if settings.tables.switches["Location Services"].isSelected{
+        if settings.tables.switches["Location Services"].value as! String == "1"{
              settings.tables.switches["Location Services"].tap()
              settings.buttons["Turn Off"].tap()
         }else{
@@ -66,11 +68,12 @@ class LoginAuthentication: XCTestCase {
     func testLocationServiceAvailability() throws{
         let app = XCUIApplication()
         toggleLocationService(turnOn: false)
+        app.launch()
+        Helper.handleAlert(title: "Location service is disabled", app: app,buttonName: "Open Settings")
+        toggleLocationService(turnOn: true)
         app.activate()
-        let locationServicePrompt = app.alerts["Location service is disabled"]
-        XCTAssertTrue(locationServicePrompt.exists)
-        locationServicePrompt.buttons["Open Settings"].tap()
-        openSettings(0, skipOpening: true)
+        let message = "You have turned off the location service please turn on the location service manually in settings"
+        XCTAssertFalse(app.alerts.staticTexts[message].waitForExistence(timeout: 3),"the warning alert is still shown") 
     }
     func testLocationAcccessPaths() throws{
         let app = XCUIApplication()
@@ -79,18 +82,12 @@ class LoginAuthentication: XCTestCase {
         let locationBtn = app/*@START_MENU_TOKEN@*/.staticTexts["Allow Location"]/*[[".buttons[\"Allow Location\"].staticTexts[\"Allow Location\"]",".staticTexts[\"Allow Location\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         locationBtn.tap()
         let permissionAlert = XCUIApplication(bundleIdentifier: "com.apple.springboard").alerts
-        XCTAssertTrue(permissionAlert.buttons["Don’t Allow"].waitForExistence(timeout: 3))
-        permissionAlert.buttons["Don’t Allow"].tap()
-        
+        Helper.handleAlert(alert: permissionAlert,buttonName: "Don’t Allow",timeOut: 3)
         let noNeedBtn = app.buttons["No need"]
         XCTAssertTrue(noNeedBtn.waitForExistence(timeout: 3))
         noNeedBtn.tap()
-        
         locationBtn.tap()
-        let locationPermissionPrompt = app.alerts["Location service is disabled"]
-        let openSetting = locationPermissionPrompt.buttons["Open Settings"]
-        XCTAssertTrue(openSetting.waitForExistence(timeout: 3))
-        openSetting.tap()
+        Helper.handleAlert(title: "Location service is disabled", app: app,buttonName: "Open Settings",timeOut: 3)
         openSettings(1, skipOpening: true)
         app.activate()
         //locationBtn.tap()
@@ -101,13 +98,15 @@ class LoginAuthentication: XCTestCase {
     var primaryButtonName = "Login"
     func testRegister() throws{
         let app = XCUIApplication()
-        app.buttons["Register?"].tap()
-//        expectation(for: NSPredicate(format : "count == 4"), evaluatedWith: app.textFields, handler: nil)
-//        waitForExpectations(timeout: 4, handler: nil)
+        if app.buttons["Register?"].exists{
+            app.buttons["Register?"].tap()
+        }
         let emailField = app.textFields["Email"]
         let passwordField = app.secureTextFields["Password"]
         let phoneNumberField = app.textFields["Phonenumber"]
         let confirmPassword = app.secureTextFields["Confirm Password"]
+        XCTAssertTrue(phoneNumberField.exists)
+        XCTAssertTrue(confirmPassword.exists)
         primaryButtonName = "Register"
         handleFieldInputWithError(field: [emailField], value: ["jkasasds"], errorTitle: "Field error")
         handleFieldInputWithError(field: [passwordField,phoneNumberField,confirmPassword], value: ["password","u234i24hu3","password2"], errorTitle: "Field mismatch")
@@ -131,6 +130,9 @@ class LoginAuthentication: XCTestCase {
 
     func testLogin() throws{
         let app = XCUIApplication()
+        if app.buttons["Login?"].exists{
+            app.buttons["Login?"].tap()
+        }
         let emailField = app.textFields["Email"]
         let passwordField = app.secureTextFields["Password"]
         let loginBtn = app.buttons["Login"]
@@ -141,11 +143,11 @@ class LoginAuthentication: XCTestCase {
         Helper.typeText(textField: passwordField, value: "123456", app: app)
         loginBtn.tap()
         let storeTab = app.tabBars.buttons["Store"]
-        XCTAssertTrue(storeTab.waitForExistence(timeout: 5))
+        XCTAssertTrue(storeTab.waitForExistence(timeout: 5),"failed to navigate to main screen")
         app.navigationBars["Cafe_Manager.MainScreenContainer"].buttons["Sign Out"].tap()
         app.terminate()
         app.launch()
-        XCTAssertFalse(storeTab.waitForExistence(timeout: 5))
+        XCTAssertFalse(storeTab.waitForExistence(timeout: 5),"App accidentally navigate to main screen")
     }
     
 
