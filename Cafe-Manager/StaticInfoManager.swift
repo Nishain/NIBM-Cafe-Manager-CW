@@ -19,6 +19,7 @@ class StaticInfoManager {
     static let dateTimeFormat = "yy/MM/dd HH:mm"
     static let dateOnly = "yy/MM/dd"
     static let unknownCategory = "unknown category"
+    static var didUITestingFirebaseConfigured = false
     static func getDateString()->String{
         let currentTimestamp = DateFormatter()
         currentTimestamp.dateFormat = StaticInfoManager.dateTimeFormat

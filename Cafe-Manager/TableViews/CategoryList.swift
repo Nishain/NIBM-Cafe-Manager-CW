@@ -47,17 +47,7 @@ class CategoryList: UITableView, UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: setDragDelete(index: indexPath.row))
     }
     
-    func addNewCategory(name:String,alert:AlertPopup){
-        db.collection("category").whereField("name", isEqualTo: name).limit(to: 1).getDocuments(completion: {
-            data,error in
-            if (data?.documents ?? []).count > 0{
-                alert.infoPop(title: "Name already exit!", body: "Category already exist,please choose a different name")
-                return
-            }
-            var ref:DocumentReference?
-            ref = self.db.collection("category").addDocument(data: ["name":name],completion: nil)
-        })
-    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         delegate = self

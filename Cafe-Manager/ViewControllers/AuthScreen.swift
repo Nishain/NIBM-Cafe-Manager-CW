@@ -27,13 +27,9 @@ class AuthScreen: UIViewController {
     var currentMode = FunctionMode.register
     var alertPop:AlertPopup!
     let auth = Auth.auth()
-    
     override func viewDidLoad() {
-//        let screen  = storyboard!.instantiateViewController(identifier: "homeScreen")
-//        screen.modalPresentationStyle = .overCurrentContext
-//        present(screen,animated: true)
         
-        
+        addDisableKeyboardOnUnFocus(fields: [email,password,phonenumber,confirmPassword])
         alertPop = AlertPopup(self)
     
         super.viewDidLoad()
@@ -41,6 +37,11 @@ class AuthScreen: UIViewController {
         toast.isHidden = true
         // Do any additional setup after loading the view.
         
+    }
+    func addDisableKeyboardOnUnFocus(fields:[UITextField]){
+        for field in fields{
+            field.delegate = self
+        }
     }
     @IBAction func onForgetPassword(_ sender: Any) {
         if isEmpty([email]){
@@ -205,4 +206,10 @@ class AuthScreen: UIViewController {
     }
     */
 
+}
+extension AuthScreen:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
 }

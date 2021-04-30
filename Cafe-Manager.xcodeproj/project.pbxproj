@@ -38,8 +38,10 @@
 		942B45492618BD1900C169AE /* AvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B45432618BD1900C169AE /* AvatarImage.swift */; };
 		942C81A12637C38200E03512 /* LoginAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C81A02637C38200E03512 /* LoginAuthentication.swift */; };
 		942C81AB2638833B00E03512 /* StoreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C81AA2638833B00E03512 /* StoreScreen.swift */; };
+		945189A1263BAACE0043EEBC /* StaticInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B3F92261B189B003586DF /* StaticInfoManager.swift */; };
+		945189A2263BAACF0043EEBC /* StaticInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B3F92261B189B003586DF /* StaticInfoManager.swift */; };
+		945189A4263BAE7A0043EEBC /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945189A3263BAE7A0043EEBC /* Helper.swift */; };
 		9452C802263A89E200910339 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94A6F342263A5EBE004D11BA /* GoogleService-Info.plist */; };
-		9452C808263A99B600910339 /* henp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9452C807263A99B600910339 /* henp.plist */; };
 		9466F179261B1C9B00A697C3 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F178261B1C9B00A697C3 /* AccountScreen.swift */; };
 		9466F17B261B1CF900A697C3 /* Reciept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F17A261B1CF900A697C3 /* Reciept.swift */; };
 		9466F17D261B1D7C00A697C3 /* RecieptList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466F17C261B1D7C00A697C3 /* RecieptList.swift */; };
@@ -122,8 +124,7 @@
 		942C81A42637DB8200E03512 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		942C81A62637DC4900E03512 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		942C81AA2638833B00E03512 /* StoreScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreScreen.swift; sourceTree = "<group>"; };
-		9452C805263A986000910339 /* GoogleService-InfoTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-InfoTest.plist"; sourceTree = "<group>"; };
-		9452C807263A99B600910339 /* henp.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = henp.plist; sourceTree = "<group>"; };
+		945189A3263BAE7A0043EEBC /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		9466F178261B1C9B00A697C3 /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		9466F17A261B1CF900A697C3 /* Reciept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reciept.swift; sourceTree = "<group>"; };
 		9466F17C261B1D7C00A697C3 /* RecieptList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieptList.swift; sourceTree = "<group>"; };
@@ -268,12 +269,11 @@
 		942B45102618A5CB00C169AE /* Cafe-ManagerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				9452C805263A986000910339 /* GoogleService-InfoTest.plist */,
 				942B45112618A5CB00C169AE /* Cafe_ManagerUITests.swift */,
 				942B45132618A5CB00C169AE /* Info.plist */,
 				942C81A02637C38200E03512 /* LoginAuthentication.swift */,
 				942C81AA2638833B00E03512 /* StoreScreen.swift */,
-				9452C807263A99B600910339 /* henp.plist */,
+				945189A3263BAE7A0043EEBC /* Helper.swift */,
 			);
 			path = "Cafe-ManagerUITests";
 			sourceTree = "<group>";
@@ -484,7 +484,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9452C802263A89E200910339 /* GoogleService-Info.plist in Resources */,
-				9452C808263A99B600910339 /* henp.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +622,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				942B45072618A5CB00C169AE /* Cafe_ManagerTests.swift in Sources */,
+				945189A1263BAACE0043EEBC /* StaticInfoManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +631,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				942C81AB2638833B00E03512 /* StoreScreen.swift in Sources */,
+				945189A2263BAACF0043EEBC /* StaticInfoManager.swift in Sources */,
+				945189A4263BAE7A0043EEBC /* Helper.swift in Sources */,
 				942B45122618A5CB00C169AE /* Cafe_ManagerUITests.swift in Sources */,
 				942C81A12637C38200E03512 /* LoginAuthentication.swift in Sources */,
 			);

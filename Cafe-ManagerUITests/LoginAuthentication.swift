@@ -98,50 +98,48 @@ class LoginAuthentication: XCTestCase {
         XCTAssertTrue(button.waitForExistence(timeout: 3))
         button.tap()
     }
-//    func testLocationAccess() throws{
-//        let app = XCUIApplication()
-//        openSettings(1)
-//        app.launch()
-//        app/*@START_MENU_TOKEN@*/.staticTexts["Allow Location"]/*[[".buttons[\"Allow Location\"].staticTexts[\"Allow Location\"]",".staticTexts[\"Allow Location\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//
-////        XCTAssertTrue(permissionPromptAlert.waitForExistence(timeout: 10))
-//        var popupIndex = 0;
-//        monitor = addUIInterruptionMonitor(withDescription: "Alert handling", handler: {alert in
-//            switch popupIndex{
-//            case 0 :
-//                alert.buttons["Don’t Allow"].tap()
-//                popupIndex = 1;
-//            case 1:
-//                let missingPermissionAlert = app.alerts["Missing Permissions"]
-//                XCTAssertTrue(missingPermissionAlert.exists)
-//                missingPermissionAlert.buttons["No need"].tap()
-//                popupIndex += 1;
-//                app/*@START_MENU_TOKEN@*/.staticTexts["Allow Location"]/*[[".buttons[\"Allow Location\"].staticTexts[\"Allow Location\"]",".staticTexts[\"Allow Location\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//            case 2:
-//                let missingPermissionAlert = app.alerts["Missing Permissions"]
-//                XCTAssertTrue(missingPermissionAlert.exists)
-//                missingPermissionAlert.buttons["Open Settings"].tap()
-//                self.openSettings(2, skipOpening: true)
-//                app.launch()
-//                popupIndex += 1
-//            default:
-//                self.removeUIInterruptionMonitor(self.monitor)
-//            }
-//            return true
-//        })
-//        app.tap()
-//    }
-    
+    var primaryButtonName = "Login"
+    func testRegister() throws{
+        let app = XCUIApplication()
+        app.buttons["Register?"].tap()
+//        expectation(for: NSPredicate(format : "count == 4"), evaluatedWith: app.textFields, handler: nil)
+//        waitForExpectations(timeout: 4, handler: nil)
+        let emailField = app.textFields["Email"]
+        let passwordField = app.secureTextFields["Password"]
+        let phoneNumberField = app.textFields["Phonenumber"]
+        let confirmPassword = app.secureTextFields["Confirm Password"]
+        primaryButtonName = "Register"
+        handleFieldInputWithError(field: [emailField], value: ["jkasasds"], errorTitle: "Field error")
+        handleFieldInputWithError(field: [passwordField,phoneNumberField,confirmPassword], value: ["password","u234i24hu3","password2"], errorTitle: "Field mismatch")
+        handleFieldInputWithError(field: [confirmPassword], value: ["password"], errorTitle: "Invalid contact number")
+        handleFieldInputWithError(field: [phoneNumberField], value: ["0770665281"], errorTitle: "Email field error",timeOut: 5)
+        handleFieldInputWithError(field: [emailField], value: ["nishain.atomic@gmail.com"], errorTitle: "Email field error",timeOut: 7)
+    }
+    func handleFieldInputWithError(field:[XCUIElement],value:[String],errorTitle:String,timeOut:Double=0){
+        let app = XCUIApplication()
+        let primaryButton = app.buttons[primaryButtonName]
+        for i in 0..<field.count{
+            Helper.typeText(textField: field[i], value: value[i], app: app)
+        }
+        if !primaryButton.isHittable{
+            field.last?.typeText("\n")
+           // app.coordinate(withNormalizedOffset: CGVector(dx: 20, dy: 20)).tap()
+        }
+        primaryButton.tap()
+        Helper.handleAlert(title:errorTitle, app: app,timeOut: timeOut)
+    }
+
     func testLogin() throws{
-                
         let app = XCUIApplication()
         let emailField = app.textFields["Email"]
         let passwordField = app.secureTextFields["Password"]
-        emailField.tap()
-        emailField.typeText("nishain.atomic@gmail.com")
-        passwordField.tap()
-        passwordField.typeText("123456")
-        app.buttons["Login"].tap()
+        let loginBtn = app.buttons["Login"]
+        primaryButtonName = "Login"
+        handleFieldInputWithError(field: [emailField], value: ["jkasasds"], errorTitle: "Field error")
+        handleFieldInputWithError(field: [passwordField], value: ["sdkfndkfs"], errorTitle: "Email field error",timeOut: 5)
+        handleFieldInputWithError(field: [emailField], value: ["nishain.atomic@gmail.com"], errorTitle: "Authentication failed",timeOut: 5)
+        Helper.typeText(textField: passwordField, value: "123456", app: app)
+        loginBtn.tap()
         let storeTab = app.tabBars.buttons["Store"]
         XCTAssertTrue(storeTab.waitForExistence(timeout: 5))
         app.navigationBars["Cafe_Manager.MainScreenContainer"].buttons["Sign Out"].tap()
