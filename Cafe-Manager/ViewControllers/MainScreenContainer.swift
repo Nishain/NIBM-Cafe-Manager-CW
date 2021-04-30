@@ -8,14 +8,29 @@
 
 import UIKit
 import FirebaseAuth
+import Reachability
+import Firebase
 class MainScreenContainer: UITabBarController {
+    var reachability:Reachability!
     @IBAction func onSignOut(_ sender: Any) {
         try? Auth.auth().signOut()
         let authenticateScreen = storyboard!.instantiateViewController(identifier: "authScreen") as AuthScreen
         navigationController!.navigationBar.isHidden = true
         navigationController!.setViewControllers([authenticateScreen], animated: true)
     }
+    
     override func viewDidLoad() {
+        reachability = try! Reachability()
+        reachability.whenUnreachable = {para in
+            print("no internet")
+            AlertPopup(self).connectionChangeAlert()
+        }
+        do{
+          try reachability.startNotifier()
+        }catch{
+          print("could not start reachability notifier")
+        }
         navigationController!.navigationBar.isHidden = false
     }
+ 
 }

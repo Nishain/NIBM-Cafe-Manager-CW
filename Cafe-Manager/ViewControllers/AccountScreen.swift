@@ -13,6 +13,7 @@ class AccountScreen: UIViewController, UIImagePickerControllerDelegate, UINaviga
     let auth = Auth.auth()
     var storage = Storage.storage()
     var username:String?
+    var alert:AlertPopup!
     @IBOutlet weak var overallTotal: UILabel!
     var contactNo:String?
     var data:[Reciept] = []
@@ -108,6 +109,7 @@ class AccountScreen: UIViewController, UIImagePickerControllerDelegate, UINaviga
         filterData(fromDate: beforeDate.text!, toDate: toDate.text!)
     }
     override func viewDidLoad() {
+        alert = AlertPopup(self)
         dateFormatter.dateFormat = StaticInfoManager.dateOnly
         super.viewDidLoad()
         setupDatePicker(textField: beforeDate, tag: 1)

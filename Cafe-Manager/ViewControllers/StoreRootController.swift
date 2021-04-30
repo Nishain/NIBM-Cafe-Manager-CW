@@ -14,8 +14,10 @@ class StoreRootController: UITabBarController {
     var catergories : [(id:String,name:String)] = []
     var foodData:[FoodDetail] = []
     var foodDataFirstimeLoaded = false
+    var alert:AlertPopup!
     override func viewDidLoad() {
         super.viewDidLoad()
+        alert = AlertPopup(self)
         loadCategories()
         // Do any additional setup after loading the view.
     }
@@ -94,7 +96,8 @@ class StoreRootController: UITabBarController {
     func loadData(){
         db.collection("Foods").getDocuments(completion:{snapshot,err in
             if(err != nil){
-               print(err)
+                print("food error "+err!.localizedDescription)
+                self.alert.infoPop(title: "Error loading food list", body: "An error occured loading food details")
             }
             //each docuemnt reflect detail about a single food item..
             self.foodData = []
@@ -118,7 +121,9 @@ class StoreRootController: UITabBarController {
                             
                             //if the image is not available in the database then display a default image
                             self.postLoadFoodImage(position: index,image: #imageLiteral(resourceName: "emptyFood"))
+                    
                         default:
+                            self.alert.infoPop(title: "Error loading image", body: "There was an error in loading food image")
                             print(imageErr)
                         }
                     }else{

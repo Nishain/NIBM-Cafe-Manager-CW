@@ -126,6 +126,7 @@ class AuthScreen: UIViewController {
         //navigationController?.setViewControllers([mainScreen], animated: true)
     }
     func loginUser(){
+        alertPop.lastMessage = "trying to login"
         if(isEmpty([email,password])){
             return alertPop.infoPop(title: "Field error", body: "Some fields are empty")
         }
@@ -146,7 +147,8 @@ class AuthScreen: UIViewController {
                 default:
                     message = "unknown error had occured"
                 }
-                AlertPopup(self).infoPop(title: "Authentication failed", body:message )
+                self.alertPop.lastMessage = message
+                self.alertPop.infoPop(title: "Authentication failed", body:message )
             }
         }))
     }
@@ -159,7 +161,7 @@ class AuthScreen: UIViewController {
         }
         return false
     }
-    func registerUser(){
+    func  registerUser(){
         if(isEmpty([email,phonenumber,password,confirmPassword])){
             return alertPop.infoPop(title: "Field error", body: "Some fields are empty")
         }
@@ -191,7 +193,7 @@ class AuthScreen: UIViewController {
                    default:
                        message = "unknown error had occured"
                    }
-                AlertPopup(self).infoPop(title: "User registration failed", body:message )
+                self.alertPop.infoPop(title: "User registration failed", body:message )
             }
         }))
     }

@@ -309,12 +309,14 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (1.2.12)
+  - ReachabilitySwift (5.0.0)
   - SkeletonView (1.15.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - Firebase/Storage
+  - ReachabilitySwift
   - SkeletonView
 
 SPEC REPOS:
@@ -335,6 +337,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - ReachabilitySwift
     - SkeletonView
 
 SPEC CHECKSUMS:
@@ -354,8 +357,9 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
 
-PODFILE CHECKSUM: f572124c1a6d3b3087f370486c00662f0babfa2e
+PODFILE CHECKSUM: 67c56b19a59137e7dbab0e415bd6d30038798c5d
 
 COCOAPODS: 1.10.1

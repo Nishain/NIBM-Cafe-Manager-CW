@@ -10,5 +10,7 @@ target 'Cafe-Manager' do
   pod 'Firebase/Firestore'
   pod 'SkeletonView'
   pod 'Firebase/Storage'
+  pod 'ReachabilitySwift'
 target 'Cafe-ManagerUITests'
+target 'Cafe-ManagerTests'
 end

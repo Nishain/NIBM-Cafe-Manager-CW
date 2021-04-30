@@ -15,7 +15,10 @@ class OrderScreen: UITableViewController {
     var orders:[OrderStatus] = []
     let locationService:LocationService = LocationService()
     var player:AVAudioPlayer?
+    var userLocationListenerInitialized = false
+    var alert:AlertPopup!
     override func viewDidLoad(){
+      alert = AlertPopup(self)
       loadOrders()
     }
     func loadOrders(){
@@ -34,9 +37,10 @@ class OrderScreen: UITableViewController {
                                               )
                 return orderStatus
             })
-            if self.orders.count == 0{
+            if !self.userLocationListenerInitialized{
                 //add the snaphot listener when orders are populated for the first time...
                 self.checkForArrivingStatus()
+                self.userLocationListenerInitialized = false
             }
             self.orders = orderList
             self.getSectionHeadings()

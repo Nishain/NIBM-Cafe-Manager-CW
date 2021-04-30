@@ -7,21 +7,36 @@
 //
 
 import XCTest
+import Firebase
+import FirebaseAuth
+@testable import Cafe_Manager
 class Cafe_ManagerTests: XCTestCase {
 
     override func setUpWithError() throws {
+        continueAfterFailure = false
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testAuthentication() {
+        let authScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "authScreen") as! AuthScreen
+        authScreen.loadView()
+        authScreen.viewDidLoad()
+        authScreen.email.text="nishain.atomic@gmail.com"
+        //"Wrong credendials.Please check your credentials"
+        XCTAssertTrue(authScreen.isEmpty([authScreen.email,authScreen.password]))
+        authScreen.password.text = "123456"
+        XCTAssertFalse(authScreen.isEmpty([authScreen.email,authScreen.password]))
+        
+        authScreen.loginUser()
+        sleep(5)
+        XCTAssertTrue(Auth.auth().currentUser?.email == "nishain.atomic@gmail.com")
     }
-
+  
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
